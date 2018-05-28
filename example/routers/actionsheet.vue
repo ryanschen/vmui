@@ -3,8 +3,8 @@
     <button @click="isShowAction = !isShowAction">{{stateText}}</button>
     <sq-actionsheet
       v-model="isShowAction"
-      :action-fun="action"
       :action-list="list"
+      @on-item-click="action"
     />
   </div>
 </template>
@@ -38,6 +38,7 @@ export default {
   methods: {
     action (item) {
       console.log(item)
+      this.$toast.text(`${item.name} -- ${item.value}`)
     }
   }
 }

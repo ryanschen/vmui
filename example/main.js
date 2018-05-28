@@ -12,6 +12,7 @@ import SqCell from '@/components/cell'
 import SqRadio from '@/components/radio'
 import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
+import SqPicker from '@/components/picker'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
@@ -24,6 +25,7 @@ Vue.component('SqCell', SqCell)
 Vue.component('SqRadio', SqRadio)
 Vue.component('SqActionsheet', SqActionsheet)
 Vue.component('SqAgree', SqAgree)
+Vue.component('SqPicker', SqPicker)
 
 Vue.use(SqToast)
 Vue.use(SqDialog)

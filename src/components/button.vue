@@ -3,6 +3,7 @@
     :type="htmlType"
     :class="classes"
     :disabled="disabled"
+    :style="{'backgroundColor':disabled ? '#ddd' : ''}"
     @click="handleClick">
     <!-- <Icon class="ivu-load-loop" type="load-c" v-if="loading"></Icon> -->
     <!-- <Icon :type="icon" v-if="icon && !loading"></Icon> -->
@@ -60,6 +61,7 @@ export default {
   },
   methods: {
     handleClick (event) {
+      if (this.disabled) return
       this.$emit('click', event)
     }
   }
@@ -68,4 +70,7 @@ export default {
 
 <style lang="scss">
 @import '../assets/style/components/button';
+.sq-btn~.sq-btn {
+  margin-top: 10px;
+}
 </style>

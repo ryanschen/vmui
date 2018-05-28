@@ -19,7 +19,7 @@ export default {
       this.$dialog.alert({
         title: '',
         message: '测试~~message',
-        onOk: () => {
+        onConfirm: () => {
           console.log('点击了alert确认按钮')
           this.$dialog.hide()
         }
@@ -29,11 +29,12 @@ export default {
       this.$dialog.confirm({
         title: '测试~~标题',
         message: '测试~~message',
-        onCancel: () => {
+        onConfirm: () => {
+          console.log('点击了confirm确认按钮')
           this.$dialog.hide()
         },
-        onOk: () => {
-          console.log('点击了confirm确认按钮')
+        onCancel: () => {
+          console.log('点击了confirm取消按钮')
           this.$dialog.hide()
         }
       })

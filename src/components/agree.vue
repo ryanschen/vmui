@@ -1,6 +1,6 @@
 <template>
   <div class="sq-agree-wrap" >
-    <div class="sq-agree__checkbox" :class="[value ? 'sq-agree__checked' : '']" @click="$_click"></div>
+    <div class="sq-agree__checkbox" :class="[value ? 'sq-agree__checked' : '']" @click="$_handleClick"></div>
     <div class="sq-agree__text">
       <slot></slot>
     </div>
@@ -19,7 +19,7 @@ export default {
   },
 
   methods: {
-    $_click (event) {
+    $_handleClick (event) {
       this.$emit('input', !this.value)
     }
   }

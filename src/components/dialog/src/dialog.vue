@@ -2,7 +2,7 @@
   <transition name="sq-dialog">
     <div class="sq-dialog-wrapper" v-show="visible">
       <div class="sq-dialog">
-        <div class="sq-dialog__mark" @click="handleClickOnMark"></div>
+        <div class="sq-dialog__mark" @click="$_handleClickOnMark"></div>
         <div class="sq-dialog__content" :class="{ dialog_content_active: iconStatus === 'success' || iconStatus === 'fail'}">
           <div v-show="title" class="sq-dialog__title">{{ title }}</div>
           <div class="sq-dialog__text">
@@ -12,17 +12,17 @@
           </div>
           <div class="sq-dialog__footer">
             <div
-              v-if="type=== 'confirm'"
+              v-if="type === 'confirm'"
               class="sq-dialog-cancel"
-              @click="handleCancel"
+              @click="$_handleCancel"
             >
-              <span v-html="cancelText"></span>
+              <span v-html="cancelButtonText"></span>
             </div>
             <div
               class="sq-dialog-ok"
-              @click="ok"
+              @click="$_handleConfirm"
             >
-              <span v-html="okText"></span>
+              <span v-html="confirmButtonText"></span>
             </div>
           </div>
         </div>
@@ -56,16 +56,21 @@ export default {
       type: String,
       default: ''
     },
-    okText: {
+    confirmButtonText: {
       type: String,
       default: '确定'
     },
-    cancelText: {
+    cancelButtonText: {
       type: String,
       default: '取消'
     },
-    onOk: {
-      type: Function
+    onConfirm: {
+      type: Function,
+      default: () => []
+    },
+    onCancel: {
+      type: Function,
+      default: () => []
     },
     iconStatus: {
       type: String,
@@ -92,14 +97,15 @@ export default {
   },
 
   methods: {
-    handleClickOnMark () {
+    $_handleClickOnMark () {
       this.clickCloseMark && (this.visible = false)
     },
-    handleCancel () {
+    $_handleCancel () {
+      this.onCancel()
       this.visible = false
     },
-    ok () {
-      this.onOk()
+    $_handleConfirm () {
+      this.onConfirm()
     }
   }
 }

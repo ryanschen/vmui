@@ -61,9 +61,9 @@
   .action-row {
     color: #333;
     background-color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     box-sizing: content-box;
-    padding: 16px 0;
+    padding: 14px 0;
     position: relative;
     &::after {
       content: " ";
@@ -110,12 +110,8 @@ export default {
       type: Boolean
     },
     actionList: {
-      // type: Array,
-      default: []
-    },
-    actionFun: {
-      type: Function,
-      default: () => {}
+      type: Array,
+      default: () => []
     }
   },
 
@@ -127,7 +123,7 @@ export default {
 
   methods: {
     $_clickItem (item) {
-      this.actionFun(item)
+      this.$emit('on-item-click', item)
       this.isShow = false
     },
     $_cancel () {

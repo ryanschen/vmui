@@ -6,6 +6,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/picker',
+      component: () => import('../routers/picker.vue')
+    },
+    {
       path: '/agree',
       component: () => import('../routers/agree.vue')
     },

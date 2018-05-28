@@ -1,6 +1,9 @@
 <template>
   <div>
     <sq-agree v-model="isAgree">同意并阅读《保险须知》</sq-agree>
+    <p>
+      {{ isAgree }}
+    </p>
   </div>
 </template>
 
