@@ -1,0 +1,292 @@
+@keyframes blink {
+ 0%{
+   background-color: white;
+ }
+ 50% {
+   background-color: black;
+ }
+ 100% {
+   background-color: white;
+ }
+}
+@keyframes ry-slide-bottom-enter {
+  from {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes ry-slide-bottom-leave {
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.ry-slide-bottom {
+  &-enter-active {
+    animation: ry-slide-bottom-enter .3s both ease;
+  }
+
+  &-leave-active {
+    animation: ry-slide-bottom-leave .3s both ease;
+  }
+}
+.keyboard-tip {
+  box-sizing: border-box;
+  position: fixed;
+  background: white;
+  margin: 0 auto;
+  width: 50px;
+  height: 54px;
+  line-height: 54px;
+  color: #418af9;
+  font-size: 28px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  box-shadow: 0 1px 2px #DDDDDD;
+  z-index: 999;
+  top: -100px;
+}
+.close-btn {
+  text-align: right;
+  display: block;
+  background-color: #CAD1D9;
+  margin: 0;
+  a {
+    display: inline-block;
+    height: 100%;
+    padding-right: 12px;
+    padding-bottom: 6px;
+    padding-top: 10px;
+    padding-left: 12px;
+    color: #2196F3;
+  }
+}
+.icon-delete {
+  color: #AAAAAA;
+  width: 20px;
+  padding: 12px 10px;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+
+/*---输入框 start----*/
+.content-wrapper {
+  box-sizing: border-box;
+  font-size: 0px;
+  height: 49px;
+  line-height: 48px;
+  padding-left: 12px;
+  border-top: 1px solid #EEEDF2;
+  border-bottom: 1px solid #EEEDF2;
+  background-color: #FFFFFF;
+  position: relative;
+  color: #878787;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  .title {
+    display: inline-block;
+    font-size: 14px;
+    width: 90px;
+    vertical-align: text-bottom;
+  }
+  .province {
+    width: 28px;
+    height: 36px;
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    top: 6px;
+    color: #498FE2;
+    line-height: 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 1px solid #498FE2;
+    margin-right: 10px;
+    padding: 9px 6px;
+    border-radius: 4px;
+    background-color: #F6F9FD;
+    vertical-align: top;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border-top: 3px solid transparent;
+      border-left: 3px solid transparent;
+      border-bottom: 3px solid #498FE2;
+      border-right: 3px solid #498FE2;
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+    }
+  }
+  .energy {
+    display: inline-flex;
+    position: relative;
+    height: 100%;
+    vertical-align: top;
+    .number {
+      border-top: 0;
+      border-bottom: 0;
+      border-right: 0;
+      border-left: 0;
+      font-size: 14px;
+      color: #333333;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 150px;
+      height: 100%;
+      &::before {
+        content: attr(data-content);
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: -1px;
+        color: #878787;
+      }
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 1px;
+        // margin-left: 2px;
+        height: 16px;
+        transform: translateY(2px);
+        animation: blink 1s infinite steps(1, start);
+      }
+    }
+    .hidden-placeholder.number {
+      &::before {
+        opacity: 0;
+      }
+    }
+    .blink-blur.number {
+      &::after {
+        display: none;
+      }
+    }
+    &::after {
+      content: '新能源';
+      display: none;
+      font-size: 12px;
+      background-color: #ecf4eb;
+      color: #30c194;
+      height: 14px;
+      line-height: 14px;
+      border-radius: 4px;
+      padding: 2px 4px;
+      position: absolute;
+      left: 71px;
+      top: 14px;
+    }
+    &.has-energy-text {
+      &::after {
+        display: inline-block;
+      }
+    }
+  }
+}
+/*---输入框 end----*/
+
+/*---省份选择 start----*/
+.province-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  min-height: 184px;
+  background-color: rgb(202, 209, 217);
+  .row-wrapper {
+    background-color: #CAD1D9;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 0;
+    display: flex;
+    padding-left: 4px;
+    padding-right: 4px;
+    li {
+      flex: 1;
+      font-size: 20px;
+      display: inline-block;
+      background-color: #FFFFFF;
+      border-radius: 4px;
+      padding: 4px 6px;
+      margin-left: 3px;
+      margin-right: 3px;
+      &:active, &:focus {
+        background-color: #A8AEBC;
+        color: #DCDFE4;
+      }
+    }
+    &:last-child {
+      padding-bottom: 8px;
+      :last-child {
+        background-color: transparent;
+      }
+    }
+  }
+}
+/*---省份选择 end----*/
+
+/*---英文 数字 keybord start----*/
+.en-num-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // display: none;
+  z-index: 999;
+  .row-key {
+    background-color: #CAD1D9;
+    padding-top: 8px;
+    text-align: center;
+    font-size: 0;
+    display: flex;
+    padding-left: 4px;
+    padding-right: 4px;
+    li {
+      flex: 1;
+      font-size: 20px;
+      display: inline-block;
+      background-color: #FFFFFF;
+      border-radius: 4px;
+      width: 20px;
+      padding: 4px 4px;
+      margin-left: 2px;
+      margin-right: 2px;
+      &.uppercase {
+        // margin-left: -6px;
+        margin-right: 4px;
+      }
+      &.del {
+        color: #2c3e50;
+        font-size: 22px;
+        background-color: transparent;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 30px;
+        &:active, &:focus {
+          background-color: #FFFFFF;
+          color: #2c3e50;
+        }
+      }
+      &.disabled {
+        color: #CCCCCC;
+        &:active, &:focus {
+          background-color: #FFFFFF;
+          color: #CCCCCC;
+        }
+      }
+      &:active, &:focus {
+        background-color: #A8AEBC;
+        color: #DCDFE4;
+      }
+    }
+    &:last-child {
+      padding-bottom: 8px;
+    }
+  }
+}
+/*---英文 数字 keybord end----*/

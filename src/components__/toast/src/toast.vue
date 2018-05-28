@@ -1,0 +1,122 @@
+<template>
+  <transition name="sq-toast">
+    <div class="sq-toast-wrapper" v-show="visible">
+      <div class="sq-toast">
+        <div class="sq-toast__mark"></div>
+        <div class="sq-toast__content">
+          <i :class="classes"></i>
+          <div class="sq-toast__text">{{ message }}</div>
+        </div>
+      </div>
+    </div>
+  </transition>
+</template>
+
+<script>
+export default {
+  name: 'sq-toast',
+
+  props: {
+    type: {
+      type: String,
+      default: 'text',
+      validator (value) {
+        return ['text', 'success', 'error'].indexOf(value) > -1
+      }
+    },
+    message: {
+      type: [String, Number],
+      default: ''
+    },
+    duration: {
+      type: Number,
+      default: 3000
+    }
+  },
+
+  computed: {
+    classes () {
+      return [
+        // 'sq-toast__icon',
+        {
+          [`sq-toast__icon icon-sqbx icon-shuruzhengque`]: this.type === 'success',
+          [`sq-toast__icon icon-sqbx icon-cuowu`]: this.type === 'error',
+          [`sq-toast__icon iconfont icon-loading`]: this.type === 'loading'
+        }
+      ]
+    }
+  },
+
+  data () {
+    return {
+      visible: false
+    }
+  },
+
+  methods: {}
+}
+</script>
+
+<style lang="scss">
+@import './icon/iconfont';
+@import './icon-new/iconfont';
+.sq-toast-enter-active, .sq-toast-leave-active {
+  transition: opacity .5s;
+}
+.sq-toast-enter, .sq-toast-leave-to{
+  opacity: 0;
+}
+
+.sq-toast__mark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+.sq-toast__content {
+  max-width: 140px;
+  min-width: 120px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2;
+  border-radius: 5px;
+  word-break: break-all;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  box-sizing: border-box;
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -50%, 0);
+  background-color: rgba(0, 0, 0, .7);
+  padding: 12px;
+  text-align: center;
+  // position: absolute;
+  // left: 50%;
+  // top: 50%;
+  // background-color: rgba(0,0,0,.5);
+  // transform: translate(-50%, -50%);
+  // color: #fff;
+  // border-radius: 4px;
+  // padding: 6px 12px;
+  // font-size: 14px;
+}
+.sq-toast__icon {
+  font-size: 54px;
+  margin-bottom: 14px;
+}
+</style>
