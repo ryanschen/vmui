@@ -101,7 +101,7 @@
     :nth-child(1) {
       width: 80px;
       flex: 0 0 80px;
-      color: dodgerblue;
+      color: #4a90e2;
       font-size: 16px;
     }
     :nth-child(2) {
@@ -110,13 +110,13 @@
     :nth-child(3) {
       width: 80px;
       flex: 0 0 80px;
-      color: dodgerblue;
+      color: #4a90e2;
       font-size: 16px;
     }
   }
   .body {
-    height: 170px;
-    line-height: 34px;
+    height: 240px;
+    line-height: 48px;
     position: relative;
     display: flex;
     background-color: #fff;
@@ -134,16 +134,19 @@
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
           linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
         background-position: top, bottom;
-        background-size: 100% 68px;
+        background-size: 100% 96px;
         background-repeat: no-repeat;
-        z-index: 1002;
+        z-index: 1004;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .line {
         width: 100%;
-        height: 34px;
+        height: 48px;
         position: absolute;
         left: 0;
-        top: 68px;
+        top: 96px;
         z-index: 1003;
       }
       .content {
@@ -153,7 +156,7 @@
         width: 100%;
         z-index: 1001;
         .item {
-          height: 34px;
+          height: 48px;
           &.bottom-line {
             &:last-child::after {
               border: 0;
@@ -163,6 +166,26 @@
       }
     }
   }
+}
+@keyframes quan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-icon {
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  border: 3px solid transparent;
+  border-top-color: #4a90e2;
+  border-left-color: #4a90e2;
+  border-bottom-color: #4a90e2;
+  border-radius: 50%;
+  animation: quan .8s infinite linear
 }
 </style>
 
@@ -174,16 +197,18 @@
     <transition name="ry-slide-bottom">
       <div class="content" v-show="value">
         <div class="header bottom-line">
-          <div @click="$_cancel">取消</div>
-          <div>请{{index}}--{{currentValue}}</div>
-          <div @click="$_confirm">确认</div>
+          <div @click="$_cancel">{{ cancelButtonText }}</div>
+          <div>{{ title }}</div>
+          <div @click="$_confirm">{{ confirmButtonText }}</div>
         </div>
         <div class="body">
           <div class="wrapper" ref="wrapper">
             <div class="content" :style="{transform: `translate3d(0px, ${translateY}px, 0px)`, transition: `transform ${transitionTime}s`}">
               <div class="item" v-for="(item, index) in list" :key="index">{{ item }}</div>
             </div>
-            <div class="item-mask"></div>
+            <div class="item-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
+              <div class="mask-loading loading-icon" v-show="loading"></div>
+            </div>
             <div class="line top-line bottom-line"></div>
           </div>
         </div>
@@ -197,6 +222,22 @@ export default {
   name: 'picker',
 
   props: {
+    cancelButtonText: {
+      type: String,
+      default: '取消'
+    },
+    confirmButtonText: {
+      type: String,
+      default: '确认'
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    title: {
+      type: String,
+      default: ''
+    },
     value: {
       type: Boolean
     },
@@ -209,16 +250,16 @@ export default {
   data () {
     return {
       temp: null, // 容器
-      translateY: 68,
+      translateY: 96,
       transitionTime: 0,
       startY: 0, // 起始值
       moveY: 0, // 移动的距离
-      saveY: 68, // 缓存偏移量
+      saveY: 96, // 缓存偏移量
       index: 0, // 选中的下标
       maxY: 0, // 最大偏移距离
       minY: 0, // 最小偏移距离
       currentValue: null, // 当前选中的值
-      rowHeight: 34, // 每行列的高度--为固定值
+      rowHeight: 48, // 每行列的高度--为固定值
       offset: 2, // 列表初始偏移量--为固定值
       startTime: undefined,
       points: []
@@ -228,11 +269,11 @@ export default {
   methods: {
     $_cancel () {
       this.$emit('input', false)
-      this.$emit('cancel', this.currentValue)
+      this.$emit('cancel', this.currentValue, this.index)
     },
     $_confirm () {
       this.$emit('input', false)
-      this.$emit('confirm', this.currentValue)
+      this.$emit('confirm', this.currentValue, this.index)
     },
     $_setY (val) {
       this.saveY = this.translateY = val
@@ -241,6 +282,7 @@ export default {
       this.currentValue = val
     },
     $_start (event) {
+      if (this.loading) return
       this.startY = event.changedTouches[0].pageY
       this.moveY = 0
       this.startTime = +new Date()
@@ -249,6 +291,7 @@ export default {
       event.preventDefault()
     },
     $_move (event) {
+      if (this.loading) return
       if (this.transitionTime) {
         this.transitionTime = 0
       }
@@ -295,7 +338,7 @@ export default {
       }
     },
     $_end (event) {
-      if (!this.startY) return
+      if (!this.startY || this.loading) return
 
       const endY = event.changedTouches[0].pageY
       const endTime = +new Date()
@@ -349,7 +392,7 @@ export default {
     },
     currentValue (val, oldVal) {
       if (val !== oldVal) {
-        this.$emit('on-change', val)
+        this.$emit('on-change', val, this.index)
       }
     }
   },

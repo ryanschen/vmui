@@ -71,7 +71,7 @@ export default {
   opacity: 0;
 }
 .sq-toast-wrapper {
-  z-index: 99;
+  z-index: 11000;
 }
 .sq-toast__mark {
   position: fixed;
@@ -90,7 +90,7 @@ export default {
   bottom: 100px;
 }
 .sq-toast__content {
-  z-index: 99;
+  z-index: 11000;
   max-width: 140px;
   min-width: 120px;
   position: fixed;

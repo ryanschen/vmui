@@ -26,9 +26,13 @@ export default {
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 body {
   background-color: #ECEFF9;
+  padding: 20px;
+  box-sizing: border-box;
 }
 *,
 *:before,
@@ -50,7 +54,7 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   height: 100%;
 }
 </style>

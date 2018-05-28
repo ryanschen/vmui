@@ -1,5 +1,4 @@
 import Navbar from './Navbar.vue'
-import Loading from './Loading.vue'
 
 import CarLicense from './CarLicense'
 import SqButton from './button.vue'
@@ -17,7 +16,6 @@ import SqToast from './toast'
 
 export default(Vue) => {
   Vue.component('navbar', Navbar)
-  Vue.component('loading', Loading)
 
   Vue.component('CarLicense', CarLicense)
   Vue.component('SqButton', SqButton)

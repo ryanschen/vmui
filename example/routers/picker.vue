@@ -7,6 +7,7 @@
       @confirm="confirm"
       @cancel="cancel"
       @on-change="onChange"
+      :loading="true"
     />
   </div>
 </template>
@@ -28,14 +29,14 @@ export default {
   },
 
   methods: {
-    onChange (item) {
-      console.log('onChange:', item)
+    onChange (item, index) {
+      this.$toast.text(`当前值为${item},index为${index}`)
     },
-    cancel (item) {
-      console.log('cancel:', item)
+    cancel (item, index) {
+      this.$toast.text(`当前值为${item},index为${index}`)
     },
-    confirm (item) {
-      console.log('confirm:', item)
+    confirm (item, index) {
+      this.$toast.text(`当前值为${item},index为${index}`)
     }
   }
 }
