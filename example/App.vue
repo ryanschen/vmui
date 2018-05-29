@@ -12,6 +12,7 @@
       <li><router-link to="/agree">agree</router-link></li>
       <li><router-link to="/picker">picker</router-link></li>
       <li><router-link to="/popup">popup</router-link></li>
+      <li><router-link to="/swiper">swiper</router-link></li>
       <!-- <li><router-link to="/checkbox">checkbox</router-link></li> -->
     </ul>
     <router-view/>

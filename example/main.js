@@ -15,6 +15,7 @@ import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
 import SqPicker from '@/components/picker'
 import SqPopup from '@/components/popup'
+import SqSwiper from '@/components/swiper'
 // import SqCheckbox from '@/components/checkbox'
 
 import SqToast from '@/components/toast/index.js'
@@ -31,6 +32,7 @@ Vue.component('SqActionsheet', SqActionsheet)
 Vue.component('SqAgree', SqAgree)
 Vue.component('SqPicker', SqPicker)
 Vue.component('SqPopup', SqPopup)
+Vue.component('SqSwiper', SqSwiper)
 // Vue.component('SqCheckbox', SqCheckbox)
 
 Vue.use(SqToast)

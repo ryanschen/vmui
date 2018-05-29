@@ -10,6 +10,10 @@ export default new Router({
     //   component: () => import('../routers/checkbox.vue')
     // },
     {
+      path: '/swiper',
+      component: () => import('../routers/swiper.vue')
+    },
+    {
       path: '/popup',
       component: () => import('../routers/popup.vue')
     },
