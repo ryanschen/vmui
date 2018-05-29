@@ -1,10 +1,10 @@
 <template>
   <div class="sq-checkbox-wrap" >
-    <div class="sq-checkbox__checkbox" :class="[value ? 'sq-checkbox__checked' : '']" @click="$_click">
+    <div class="sq-checkbox__checkbox" :class="[name === saveName ? 'sq-checkbox__checked' : '']" @click="$_click">
       <input type="checkbox" name="" :id="id">
     </div>
     <div class="sq-checkbox__text">
-      <label :for="id" style="padding-right:24px;height: 100%;display: inline-block;">
+      <label :for="id" style="height: 100%;display: inline-block;" @click="$_click">
         <slot></slot>
       </label>
     </div>
@@ -16,6 +16,9 @@ export default {
   name: '',
 
   props: {
+    name: {
+      required: true
+    },
     value: {
       type: Boolean,
       default: false
@@ -24,13 +27,14 @@ export default {
 
   data () {
     return {
+      saveName: this.name,
       id: Math.random()
     }
   },
 
   methods: {
     $_click (event) {
-      this.$emit('click')
+      this.$emit('input', !this.value)
     }
   }
 }
@@ -46,7 +50,7 @@ export default {
   display: inline-flex;
   vertical-align: middle;
   .sq-checkbox__checkbox {
-    margin-right: 10px;
+    margin-right: 6px;
     position: relative;
     input[type="checkbox"] {
       margin: 0;

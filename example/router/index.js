@@ -5,6 +5,14 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    // {
+    //   path: '/checkbox',
+    //   component: () => import('../routers/checkbox.vue')
+    // },
+    {
+      path: '/popup',
+      component: () => import('../routers/popup.vue')
+    },
     {
       path: '/picker',
       component: () => import('../routers/picker.vue')

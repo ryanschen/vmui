@@ -72,5 +72,115 @@ export default {
 
 </script>
 <style lang='scss'>
-@import '../assets/style/components/cell';
+$theme-color:#4A90E2;
+
+.sq-cell {
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+  box-sizing: border-box;
+  width: 100%;
+  height: 48px;
+  line-height: 48px;
+  background-color: #fff;
+  border-radius: 0;
+  color: #333;
+  overflow: hidden;
+  font-size: 0;
+  position: relative;
+  padding-left: 16px;
+  &__label {
+    flex: 0 0 74px;
+    -webkit-flex: 0 0 74px;
+    -webkit-box-flex: 0 0 74px;
+    width: 74px;
+    // padding-left: 16px;
+    box-sizing: border-box;
+    span {
+      font-size: 14px;
+    }
+    &~.sq-cell__value {
+      .sq-cell__control {
+        padding-left: 0;
+      }
+      .sq-cell__right {
+        text-align: right;
+        padding-right: 14px;
+      }
+    }
+    &~.sq-cell__value.sq-cell__islink.sq-cell__textright {
+      .sq-cell__right {
+        padding-right: 28px;
+      }
+    }
+  }
+  &__value {
+    flex: 1;
+    -webkit-flex: 1;
+    -webkit-box-flex: 1;
+    position: relative;
+    .sq-cell__control {
+      // padding-left: 12px;
+      outline: none;
+    }
+    .sq-cell__button {
+      position: absolute;
+      right: 12px;
+      bottom: 8px;
+      font-size: 14px;
+      height: 34px;
+      button {
+        height: 100%;
+        line-height: initial;
+        vertical-align: top;
+        padding: 0 14px;
+        color: $theme-color;
+        border-color: $theme-color;
+        background-color: #F6F9FD;
+      }
+    }
+  }
+  &__control {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    line-height: normal;
+    border:0;
+    padding: 14px 0px;
+    font-size: 14px;
+  }
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 200%;
+    transform-origin: 0 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    left: 16px;
+    right: 0;
+    width: auto;
+    transform: scale(1, .5);
+    border: 0 solid #e5e5e5;
+    border-bottom-width: 1px;
+  }
+}
+
+// arrow
+.sq-cell__islink {
+  position: relative;
+}
+.sq-cell__islink::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 10px;
+  right: 14px;
+  top: 20px;
+  height: 10px;
+  border-right: 2px solid #e6e6e6;
+  border-top: 2px solid #e6e6e6;
+  box-sizing: border-box;
+  transform: rotate(45deg);
+}
 </style>

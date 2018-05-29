@@ -1,4 +1,6 @@
 <style lang="scss">
+$theme-color: #4a90e2;
+
 // 内容从下往上动画
 @keyframes ry-slide-bottom-enter {
   from {
@@ -101,7 +103,7 @@
     :nth-child(1) {
       width: 80px;
       flex: 0 0 80px;
-      color: #4a90e2;
+      color: $theme-color;
       font-size: 16px;
     }
     :nth-child(2) {
@@ -110,7 +112,7 @@
     :nth-child(3) {
       width: 80px;
       flex: 0 0 80px;
-      color: #4a90e2;
+      color: $theme-color;
       font-size: 16px;
     }
   }
@@ -181,9 +183,9 @@
   width: 36px;
   height: 36px;
   border: 3px solid transparent;
-  border-top-color: #4a90e2;
-  border-left-color: #4a90e2;
-  border-bottom-color: #4a90e2;
+  border-top-color: $theme-color;
+  border-left-color: $theme-color;
+  border-bottom-color: $theme-color;
   border-radius: 50%;
   animation: quan .8s infinite linear
 }

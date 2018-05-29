@@ -1,5 +1,5 @@
 <template>
-  <div class="sq-agree-wrap" >
+  <div class="sq-agree-wrap">
     <div class="sq-agree__checkbox" :class="[value ? 'sq-agree__checked' : '']" @click="$_handleClick"></div>
     <div class="sq-agree__text">
       <slot></slot>
@@ -26,7 +26,9 @@ export default {
 }
 
 </script>
-<style lang='scss'>
+<style lang="scss">
+$theme-color: #0097DF;
+
 .sq-agree-wrap {
   display: -webkit-box;
   display: -moz-box;
@@ -49,7 +51,7 @@ export default {
       border-radius: 50%;
     }
     &::after {
-      content: "";
+      content: '';
       display: table;
       width: 4px;
       height: 8px;
@@ -65,7 +67,7 @@ export default {
   }
 }
 .sq-agree__checked.sq-agree__checkbox::before {
-  background-color: #0097DF;
+  background-color: $theme-color;
 }
 .sq-agree__checked.sq-agree__checkbox::after {
   transform: rotate(45deg) scale(1);

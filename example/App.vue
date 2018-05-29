@@ -11,6 +11,8 @@
       <li><router-link to="/actionsheet">actionsheet</router-link></li>
       <li><router-link to="/agree">agree</router-link></li>
       <li><router-link to="/picker">picker</router-link></li>
+      <li><router-link to="/popup">popup</router-link></li>
+      <!-- <li><router-link to="/checkbox">checkbox</router-link></li> -->
     </ul>
     <router-view/>
   </div>
@@ -38,7 +40,8 @@ body {
 *:before,
 *:after {
   /* box-sizing: border-box; */
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* *[contenteditable] {
