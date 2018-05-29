@@ -1,5 +1,7 @@
 <template>
   <div>
+    <sq-popup v-model="isShowDefault">default</sq-popup>
+    <button @click="isShowDefault = !isShowDefault">isShowDefault</button>
     <sq-popup v-model="isShowLeft" position="left">left</sq-popup>
     <button @click="isShowLeft = !isShowLeft">isShowLeft</button>
     <sq-popup v-model="isShowRight" position="right">right</sq-popup>
@@ -17,6 +19,7 @@ export default {
 
   data () {
     return {
+      isShowDefault: false,
       isShowLeft: false,
       isShowRight: false,
       isShowTop: false,

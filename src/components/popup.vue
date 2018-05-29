@@ -172,6 +172,11 @@ $theme-color: #4a90e2;
   width: 60%;
   bottom: 0;
 }
+.content.popup-default {
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+}
 .content {
   z-index: 1001;
   position: fixed;
@@ -281,7 +286,7 @@ $theme-color: #4a90e2;
     <transition name="ry-fade">
       <div class="mask" v-show="value" @click="$_cancel"></div>
     </transition>
-    <transition :name="slideType">
+    <transition :name="transitionSlideType">
       <div
         class="content"
         v-show="value"
@@ -289,7 +294,8 @@ $theme-color: #4a90e2;
           'popup-top': position === 'top',
           'popup-bottom': position === 'bottom',
           'popup-left': position === 'left',
-          'popup-right': position === 'right'
+          'popup-right': position === 'right',
+          'popup-default': position === 'default',
         }"
       >
         <slot></slot>
@@ -305,11 +311,15 @@ export default {
   props: {
     position: {
       type: String,
-      default: 'bottom'
+      default: 'default'
     },
     value: {
       type: Boolean,
       required: true
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
     }
   },
 
@@ -319,12 +329,13 @@ export default {
   },
 
   computed: {
-    slideType () {
+    transitionSlideType () {
       const slide = {
         bottom: 'ry-slide-bottom',
         left: 'ry-slide-left',
         top: 'ry-slide-top',
-        right: 'ry-slide-right'
+        right: 'ry-slide-right',
+        default: 'ry-fade'
       }
       return slide[this.position]
     },
@@ -333,7 +344,8 @@ export default {
         bottom: 'popup-bottom',
         left: 'popup-left',
         top: 'popup-top',
-        right: 'popup-right'
+        right: 'popup-right',
+        default: 'popup-default'
       }
       return slide[this.position]
     }
@@ -341,6 +353,7 @@ export default {
 
   methods: {
     $_cancel () {
+      if (!this.closeOnClickOverlay) return
       this.$emit('input', false)
     }
   }
