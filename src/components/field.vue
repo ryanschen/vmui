@@ -1,13 +1,13 @@
 <template>
-  <div class="sq-cell sq-hairline">
-    <div class="sq-cell__label" v-if="label">
+  <div class="sq-field sq-hairline">
+    <div class="sq-field__label" v-if="label">
       <span>{{label}}</span>
     </div>
-    <div class="sq-cell__value" :class="classes">
+    <div class="sq-field__value" :class="classes">
       <input
         v-if="!$slots.control"
-        class="sq-cell__control"
-        :class="{'sq-cell__right': right}"
+        class="sq-field__control"
+        :class="{'sq-field__right': right}"
         :type="type"
         :value="value"
         :style="iptStyle"
@@ -15,7 +15,7 @@
         v-on="listeners"
       >
       <slot name="control"></slot>
-      <div class="sq-cell__button" v-if="$slots.button">
+      <div class="sq-field__button" v-if="$slots.button">
         <slot name="button"/>
       </div>
     </div>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'sq-cell',
+  name: 'sq-field',
 
   inheritAttrs: false,
 
@@ -51,8 +51,8 @@ export default {
   computed: {
     classes () {
       return {
-        'sq-cell__islink': this.arrow,
-        'sq-cell__textright': this.right
+        'sq-field__islink': this.arrow,
+        'sq-field__textright': this.right
       }
     },
     listeners () {
@@ -74,7 +74,7 @@ export default {
 <style lang='scss'>
 $theme-color:#4A90E2;
 
-.sq-cell {
+.sq-field {
   display: flex;
   display: -webkit-box;
   display: -webkit-flex;
@@ -99,17 +99,17 @@ $theme-color:#4A90E2;
     span {
       font-size: 14px;
     }
-    &~.sq-cell__value {
-      .sq-cell__control {
+    &~.sq-field__value {
+      .sq-field__control {
         padding-left: 0;
       }
-      .sq-cell__right {
+      .sq-field__right {
         text-align: right;
         padding-right: 14px;
       }
     }
-    &~.sq-cell__value.sq-cell__islink.sq-cell__textright {
-      .sq-cell__right {
+    &~.sq-field__value.sq-field__islink.sq-field__textright {
+      .sq-field__right {
         padding-right: 28px;
       }
     }
@@ -119,11 +119,11 @@ $theme-color:#4A90E2;
     -webkit-flex: 1;
     -webkit-box-flex: 1;
     position: relative;
-    .sq-cell__control {
+    .sq-field__control {
       // padding-left: 12px;
       outline: none;
     }
-    .sq-cell__button {
+    .sq-field__button {
       position: absolute;
       right: 12px;
       bottom: 8px;
@@ -167,10 +167,10 @@ $theme-color:#4A90E2;
 }
 
 // arrow
-.sq-cell__islink {
+.sq-field__islink {
   position: relative;
 }
-.sq-cell__islink::after {
+.sq-field__islink::after {
   content: "";
   display: block;
   position: absolute;

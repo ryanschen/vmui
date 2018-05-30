@@ -10,6 +10,10 @@ export default new Router({
     //   component: () => import('../routers/checkbox.vue')
     // },
     {
+      path: '/',
+      component: () => import('../routers/index.vue')
+    },
+    {
       path: '/swiper',
       component: () => import('../routers/swiper.vue')
     },
@@ -42,8 +46,8 @@ export default new Router({
       component: () => import('../routers/radio.vue')
     },
     {
-      path: '/cell',
-      component: () => import('../routers/cell.vue')
+      path: '/field',
+      component: () => import('../routers/field.vue')
     },
     {
       path: '/tab',

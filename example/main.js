@@ -3,13 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import SqDemo from '@/components/demo'
 
 import SqKeyboard from '@/components/CarLicense'
 import SqButton from '@/components/button'
 import SqPane from '@/components/pane'
 import SqTabs from '@/components/tabs'
-import SqCell from '@/components/cell'
-import SqCellgroup from '@/components/cellGroup'
+import SqField from '@/components/field'
+import SqFieldgroup from '@/components/fieldGroup'
 import SqRadio from '@/components/radio'
 import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
@@ -20,13 +21,14 @@ import SqSwiper from '@/components/swiper'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
+Vue.component('SqDemo', SqDemo)
 
 Vue.component('SqKeyboard', SqKeyboard)
 Vue.component('SqButton', SqButton)
 Vue.component('SqPane', SqPane)
 Vue.component('SqTabs', SqTabs)
-Vue.component('SqCell', SqCell)
-Vue.component('SqCellgroup', SqCellgroup)
+Vue.component('SqField', SqField)
+Vue.component('SqFieldgroup', SqFieldgroup)
 Vue.component('SqRadio', SqRadio)
 Vue.component('SqActionsheet', SqActionsheet)
 Vue.component('SqAgree', SqAgree)

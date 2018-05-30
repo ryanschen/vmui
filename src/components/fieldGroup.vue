@@ -1,12 +1,12 @@
 <template>
-  <div class="sq-cell-group">
+  <div class="sq-field-group">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'cell-group',
+  name: 'field-group',
 
   data () {
     return {
@@ -18,15 +18,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sq-cell-group {
+.sq-field-group {
   padding: 16px;
-  .sq-cell {
+  .sq-field {
     border-radius: 5px;
   }
-  .sq-cell~.sq-cell {
+  .sq-field~.sq-field {
     margin-top: 10px;
   }
-  .sq-cell:not(:last-child)::after {
+  .sq-field:not(:last-child)::after {
     border: 0;
   }
 }

@@ -1,31 +1,21 @@
 <template>
   <div id="app">
-    <ul>
-      <li><router-link to="/carLicense">carLicense</router-link></li>
-      <li><router-link to="/button">button</router-link></li>
-      <li><router-link to="/cell">cell</router-link></li>
-      <li><router-link to="/tab">tab</router-link></li>
-      <li><router-link to="/radio">radio</router-link></li>
-      <li><router-link to="/toast">toast</router-link></li>
-      <li><router-link to="/dialog">dialog</router-link></li>
-      <li><router-link to="/actionsheet">actionsheet</router-link></li>
-      <li><router-link to="/agree">agree</router-link></li>
-      <li><router-link to="/picker">picker</router-link></li>
-      <li><router-link to="/popup">popup</router-link></li>
-      <li><router-link to="/swiper">swiper</router-link></li>
-      <!-- <li><router-link to="/checkbox">checkbox</router-link></li> -->
-    </ul>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      show: false
+    }
+  }
 }
 </script>
 
-<style>
+<style lang="scss">
 html,
 body {
   height: 100%;
@@ -34,25 +24,14 @@ body {
 }
 body {
   background-color: #ECEFF9;
-  padding: 20px;
+  // padding: 20px;
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
-  /* box-sizing: border-box; */
-  /* -webkit-tap-highlight-color: rgba(0, 0, 0, 0); */
   -webkit-tap-highlight-color: transparent;
 }
-
-/* *[contenteditable] {
-  user-select: auto !important;
-  -webkit-user-select: auto !important;
-} */
-
-/* *:focus {
-  outline: none;
-} */
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

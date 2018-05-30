@@ -5,7 +5,7 @@
   user-select: none;
   .wrap {
     width: 1500px;
-    transition: transform .5s;
+    // transition: transform .5s;
     // transform: translateX(0);
     .item {
       width: 375px;
@@ -30,8 +30,24 @@
 
 <template>
   <div class="swiper-wrap">
-    <div class="wrap" ref="wrap" :style="{'transform': `translateX(${translateX}px)`}">
-      <div v-for="(item, index) in list" :key="index" class="item" :style="{'transform': (index === 0 && index2 === 4) ? `translateX(1500px)` : ''}">{{ index }}</div>
+    <div
+      class="wrap"
+      ref="wrap"
+      :style="{
+        'transform': `translateX(${translateX}px)`,
+        'transition': `transform ${speed}s`
+      }"
+    >
+      <div
+        v-for="(item, index) in list"
+        :key="index"
+        class="item"
+        :style="{
+          'transform': (index === 0 && index2 === 4) ? `translateX(1500px)` : ''
+        }"
+      >
+        {{ index }}
+      </div>
     </div>
   </div>
 </template>
@@ -47,7 +63,8 @@ export default {
       ],
       index2: 0,
       width: 375,
-      translateX: 0
+      translateX: 0,
+      speed: 0.5
     }
   },
 
@@ -59,6 +76,11 @@ export default {
         this.index2 = 0
       }
       this.index2 = this.index2 + 1
+      // if (this.index2 === 1) {
+      //   this.speed = 0
+      // } else {
+      //   this.speed = 0.5
+      // }
       this.translateX = -this.width * this.index2
     }, 2000)
   }
