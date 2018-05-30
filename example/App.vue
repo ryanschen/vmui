@@ -23,7 +23,7 @@ body {
   padding: 0;
 }
 body {
-  background-color: #ECEFF9;
+  background-color: #f8f8f8;
   // padding: 20px;
   box-sizing: border-box;
 }
@@ -39,5 +39,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   /* margin-top: 20px; */
   height: 100%;
+}
+.demo-page-wrap {
+  padding: 20px;
 }
 </style>

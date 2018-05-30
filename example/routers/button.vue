@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-page-wrap">
     <sq-button @click="clickHandle">默认</sq-button>
     <sq-button type="primary">primary</sq-button>
     <sq-button type="ghost">ghost</sq-button>
