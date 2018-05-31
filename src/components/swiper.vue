@@ -5,8 +5,6 @@
   user-select: none;
   .wrap {
     width: 1500px;
-    // transition: transform .5s;
-    // transform: translateX(0);
     .item {
       width: 375px;
       height: 200px;
@@ -21,7 +19,7 @@
         background-color: lightskyblue;
       }
       &:nth-child(4) {
-        background-color: lightgreen;
+        background-color: #4a90e2;
       }
     }
   }
@@ -71,7 +69,7 @@
       </div>
     </div>
 
-    <div class="swiper-point-wrap">
+    <div class="swiper-point-wrap" v-if="showPoint">
       <div
         v-for="(item, index) in list"
         :key="index"
@@ -101,6 +99,10 @@ export default {
     list: {
       type: Array,
       default: () => [1, 2, 3, 4]
+    },
+    showPoint: {
+      type: Boolean,
+      default: true
     }
   },
 

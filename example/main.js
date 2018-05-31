@@ -43,6 +43,10 @@ Vue.use(SqDialog)
 
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.name ? `${to.path.replace('/', '')}-${to.meta.name}` : 'ui-demo'
+  next()
+}) 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
