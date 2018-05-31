@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <button @click="isShowAction = !isShowAction">{{stateText}}</button>
+  <div class="demo-page-wrap">
+    <sq-button type="primary" @click="isShowAction = !isShowAction">{{stateText}}</sq-button>
     <sq-actionsheet
       v-model="isShowAction"
       :action-list="list"

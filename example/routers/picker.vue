@@ -1,25 +1,43 @@
 <template>
-  <div>
-    <button @click="isShow = !isShow">show</button>
-    <picker
+  <div class="demo-page-wrap">
+    <h4>普通无标题</h4>
+    <sq-picker
       :list="list"
-      v-model="isShow"
+      @on-change="onChange"
+    />
+
+    <h4>有标题</h4>
+    <sq-picker
+      show-toolbar
+      :list="list"
       @confirm="confirm"
       @cancel="cancel"
       @on-change="onChange"
+    />
+    
+    <h4>异步请求loading</h4>
+    <sq-picker
+      :list="list"
       :loading="true"
     />
+
+    <h4>搭配popup使用</h4>
+    <sq-button type="primary" @click="isShow = !isShow">show</sq-button>
+    <sq-popup v-model="isShow" position="bottom">
+      <sq-picker
+        show-toolbar
+        :list="list"
+        @confirm="confirm"
+        @cancel="cancel"
+        @on-change="onChange"
+      />
+    </sq-popup>
   </div>
 </template>
 
 <script>
-import picker from '@/components/picker'
 export default {
   name: '',
-
-  components: {
-    picker
-  },
 
   data () {
     return {
@@ -32,11 +50,19 @@ export default {
     onChange (item, index) {
       this.$toast.text(`当前值为${item},index为${index}`)
     },
+    cancel1 (item, index) {
+      this.$toast.text(`当前值为${item},index为${index}`)
+    },
+    confirm1 (item, index) {
+      this.$toast.text(`当前值为${item},index为${index}`)
+    },
     cancel (item, index) {
       this.$toast.text(`当前值为${item},index为${index}`)
+      this.isShow = !this.isShow
     },
     confirm (item, index) {
       this.$toast.text(`当前值为${item},index为${index}`)
+      this.isShow = !this.isShow
     }
   }
 }

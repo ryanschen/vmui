@@ -42,5 +42,8 @@ body {
 }
 .demo-page-wrap {
   padding: 20px;
+  min-height: 100%;
+  box-sizing: border-box;
+  background-color: #ECEFF9;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-page-wrap">
     <sq-fieldgroup>
       <sq-field placeholder="请输入姓名" v-model="name" arrow></sq-field>
       <sq-field label="姓名" placeholder="请输入姓名" v-model="name" arrow></sq-field>

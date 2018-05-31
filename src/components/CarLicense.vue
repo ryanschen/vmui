@@ -63,7 +63,7 @@
 
 <script>
 export default {
-  name: 'CarLicense',
+  name: 'sq-carlicense',
 
   props: {
     provinceNameProp: {
@@ -124,6 +124,7 @@ export default {
     getValue () {
       return this.provinceName + this.carNumber
     },
+
     closeAllKeyboard (event) {
       if (!this.$refs.hasOwnProperty('keyboardWrapper') || !this.$refs.keyboardWrapper) {
         return
@@ -134,24 +135,30 @@ export default {
         this.provinceDisplay !== 'none' && (this.provinceDisplay = 'none')
       }
     },
+
     closeEnNumKeyboard (event) {
       this.keyBoardDisplay = 'none'
       event.stopPropagation()
     },
+
     cliackDeleteHandle () {
       this.carNumber = this.carNumber.slice(0, 1)
     },
+
     clickProvinceNameHandle () {
       this.showProvinceKeyBoard()
     },
+
     showProvinceKeyBoard () {
       this.provinceDisplay !== 'block' && (this.provinceDisplay = 'block')
       this.keyBoardDisplay !== 'none' && (this.keyBoardDisplay = 'none')
     },
+
     showEnNumberBoard () {
       this.keyBoardDisplay !== 'block' && (this.keyBoardDisplay = 'block')
       this.provinceDisplay !== 'none' && (this.provinceDisplay = 'none')
     },
+
     getProvince (event) {
       event.stopPropagation()
       const nodeName = event.target.nodeName.toLocaleLowerCase()
@@ -162,6 +169,7 @@ export default {
         this.showEnNumberBoard()
       }
     },
+
     getContent (event) {
       event.stopPropagation()
       const nodeName = event.target.nodeName.toLocaleLowerCase()
@@ -227,9 +235,11 @@ export default {
         this.closeBtnText === '完成' && (this.closeBtnText = this.closeButtonText)
       }
     },
+
     provinceNameProp (newValue, oldValue) {
       this.provinceName = this.provinceNameProp
     },
+
     carNumberProp (newValue, oldValue) {
       this.carNumber = this.carNumberProp
     }

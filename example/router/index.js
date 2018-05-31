@@ -73,18 +73,18 @@ export default new Router({
       component: () => import('../routers/field.vue')
     },
     {
-      path: '/tab',
+      path: '/tabs',
       meta: {
         name: '标签页'
       },
-      component: () => import('../routers/tab.vue')
+      component: () => import('../routers/tabs.vue')
     },
     {
-      path: '/carLicense',
+      path: '/carlicense',
       meta: {
         name: '车牌录入键盘'
       },
-      component: () => import('../routers/carLicense.vue')
+      component: () => import('../routers/carlicense.vue')
     },
     {
       path: '/button',

@@ -1,8 +1,25 @@
 <template>
   <div class="sq-tabs-wrapper">
-    <div class="sq-tabs-header" :style="{'position': sticky ? 'fixed' : 'absolute'}" ref="tabHeaderWrapper">
-      <div class="sq-tabs-header-line" :style="{'transform': tleft, 'width': lineWidth, 'display': lineDisplay}"></div>
-      <div class="sq-tabs-header-item" :class="{'sq-tab-active': currentActive === tab.name}" @click="handleClick($event, index)" v-for="(tab, index) in tabList" :key="index">
+    <div
+      class="sq-tabs-header"
+      :style="{'position': sticky ? 'fixed' : 'absolute'}"
+      ref="tabHeaderWrapper"
+    >
+      <div
+        class="sq-tabs-header-line"
+        :style="{
+          'transform': tleft, 'width': lineWidth,
+          'display': lineDisplay
+        }"
+      >
+      </div>
+      <div
+        class="sq-tabs-header-item"
+        :class="{'sq-tab-active': currentActive === tab.name}"
+        @click="handleClick($event, index)"
+        v-for="(tab, index) in tabList"
+        :key="index"
+      >
         {{ tab.label }}
       </div>
     </div>
@@ -40,18 +57,21 @@ export default {
     handleClick (event, index) {
       const navName = this.tabList[index].name
       if (navName === this.currentActive) { return }
+
       this.currentActive = navName
       const parentLeft = event.srcElement.parentElement.getBoundingClientRect().left
       const targetLeft = event.target.getBoundingClientRect().left
       this.tleft = `translate(${targetLeft - parentLeft}px, 0)`
+
       this.$emit('click', navName)
     },
     getPane () {
-      return this.$children.filter(item => item.$options.name === 'tab-pane')
+      return this.$children.filter(item => item.$options.name === 'sq-tabpane')
     },
     updateNav () {
       const children = this.getPane()
       if (children.length === this.tabList.length) { return }
+
       this.tabList = []
       children.forEach((pane, index) => {
         this.tabList.push({
@@ -59,14 +79,17 @@ export default {
           name: pane.name
         })
       })
+
       this.lineWidth = (100 / this.tabList.length) + '%'
     }
   },
   mounted () {
     const currentActive = this.currentActive
+
     if (currentActive) {
       const length = this.tabList.length
       const width = this.$refs.tabHeaderWrapper.clientWidth
+
       this.tabList.forEach((item, index) => {
         if (currentActive === item.name) {
           this.tleft = `translate(${index * (width / length)}px, 0)`

@@ -1,3 +1,65 @@
+<template>
+  <div class="picker">
+    <transition name="ry-fade">
+      <div class="mask" v-show="value" @click="$_cancel"></div>
+    </transition>
+    <transition :name="transitionSlideType">
+      <div
+        class="content"
+        v-show="value"
+        :class="positionClass"
+      >
+        <slot></slot>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script>
+const objTransitionSlideType = {
+  bottom: 'ry-slide-bottom',
+  left: 'ry-slide-left',
+  top: 'ry-slide-top',
+  right: 'ry-slide-right',
+  default: 'ry-fade'
+}
+
+export default {
+  name: 'sq-popup',
+
+  props: {
+    position: {
+      type: String,
+      default: 'default'
+    },
+    value: {
+      type: Boolean,
+      required: true
+    },
+    closeOnClickOverlay: {
+      type: Boolean,
+      default: true
+    }
+  },
+
+  computed: {
+    positionClass () {
+      return [ `popup-${this.position}` ]
+    },
+    transitionSlideType () {
+      return objTransitionSlideType[this.position]
+    }
+  },
+
+  methods: {
+    $_cancel () {
+      if (!this.closeOnClickOverlay) return
+      this.$emit('input', false)
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 $theme-color: #4a90e2;
 // 内容从右往左动画
@@ -148,7 +210,7 @@ $theme-color: #4a90e2;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, .5);
-  z-index: 1000;
+  z-index: 1010;
 }
 .content.popup-top {
   left: 0;
@@ -178,14 +240,9 @@ $theme-color: #4a90e2;
   transform: translate3d(-50%, -50%, 0);
 }
 .content {
-  z-index: 1001;
+  z-index: 1011;
   position: fixed;
-  // left: 0;
-  // right: 0;
-  // top: 0;
-  text-align: center;
   background-color: #fff;
-  padding: 16px;
   .header {
     display: flex;
     min-height: 50px;
@@ -228,7 +285,7 @@ $theme-color: #4a90e2;
         background-position: top, bottom;
         background-size: 100% 96px;
         background-repeat: no-repeat;
-        z-index: 1004;
+        z-index: 1014;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -239,14 +296,14 @@ $theme-color: #4a90e2;
         position: absolute;
         left: 0;
         top: 96px;
-        z-index: 1003;
+        z-index: 1013;
       }
       .content {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        z-index: 1001;
+        z-index: 1011;
         .item {
           height: 48px;
           &.bottom-line {
@@ -280,82 +337,3 @@ $theme-color: #4a90e2;
   animation: quan .8s infinite linear
 }
 </style>
-
-<template>
-  <div class="picker">
-    <transition name="ry-fade">
-      <div class="mask" v-show="value" @click="$_cancel"></div>
-    </transition>
-    <transition :name="transitionSlideType">
-      <div
-        class="content"
-        v-show="value"
-        :class="{
-          'popup-top': position === 'top',
-          'popup-bottom': position === 'bottom',
-          'popup-left': position === 'left',
-          'popup-right': position === 'right',
-          'popup-default': position === 'default',
-        }"
-      >
-        <slot></slot>
-      </div>
-    </transition>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'picker',
-
-  props: {
-    position: {
-      type: String,
-      default: 'default'
-    },
-    value: {
-      type: Boolean,
-      required: true
-    },
-    closeOnClickOverlay: {
-      type: Boolean,
-      default: true
-    }
-  },
-
-  data () {
-    return {
-    }
-  },
-
-  computed: {
-    transitionSlideType () {
-      const slide = {
-        bottom: 'ry-slide-bottom',
-        left: 'ry-slide-left',
-        top: 'ry-slide-top',
-        right: 'ry-slide-right',
-        default: 'ry-fade'
-      }
-      return slide[this.position]
-    },
-    slidePosition () {
-      const slide = {
-        bottom: 'popup-bottom',
-        left: 'popup-left',
-        top: 'popup-top',
-        right: 'popup-right',
-        default: 'popup-default'
-      }
-      return slide[this.position]
-    }
-  },
-
-  methods: {
-    $_cancel () {
-      if (!this.closeOnClickOverlay) return
-      this.$emit('input', false)
-    }
-  }
-}
-</script>

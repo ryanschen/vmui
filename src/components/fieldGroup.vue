@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'field-group',
+  name: 'sq-fieldgroup',
 
   data () {
     return {

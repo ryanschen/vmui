@@ -85,7 +85,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'sq-swipter',
 
   props: {
     speedTimeProp: {

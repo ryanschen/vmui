@@ -22,7 +22,7 @@ export default {
       // 基础
       list1: [
         { to: 'button', name: 'Button - 按钮' },
-        { to: 'tab', name: 'Tab - 标签页' },
+        { to: 'tabs', name: 'Tabs - 标签页' },
         { to: 'popup', name: 'Popup - 弹出层' },
         { to: 'swiper', name: 'Swiper - 轮播' }
       ],

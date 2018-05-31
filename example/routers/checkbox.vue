@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-page-wrap">
     <sq-checkboxgroup v-model="name">
       <sq-checkbox name="1">22</sq-checkbox>
       <sq-checkbox name="2">22</sq-checkbox>

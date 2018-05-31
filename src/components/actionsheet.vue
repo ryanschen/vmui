@@ -1,3 +1,63 @@
+<template>
+  <div class="action-wrap">
+    <transition name="ry-fade">
+      <div class="action-mark" v-show="isShow" @click="$_cancel"></div>
+    </transition>
+    <transition name="ry-slide-bottom">
+      <div class="action-content" v-show="isShow">
+        <div class="action-row" @click="$_clickItem(item)" v-for="(item, index) in actionList" :key="index">{{ item.name }}</div>
+        <div class="action-row" @click="$_cancel" v-show="showCancelButton">取消</div>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'actionsheet',
+
+  props: {
+    value: {
+      type: Boolean
+    },
+    actionList: {
+      type: Array,
+      default: () => []
+    },
+    showCancelButton: {
+      type: Boolean,
+      default: true
+    }
+  },
+
+  data () {
+    return {
+      isShow: this.value
+    }
+  },
+
+  methods: {
+    $_clickItem (item) {
+      this.$emit('on-item-click', item)
+      this.isShow = false
+    },
+    $_cancel () {
+      this.$emit('on-cancel-click')
+      this.isShow = false
+    }
+  },
+
+  watch: {
+    isShow (val) {
+      this.$emit('input', val)
+    },
+    value (val) {
+      this.isShow = val
+    }
+  }
+}
+</script>
+
 <style lang="scss">
 // 内容从下往上动画
 @keyframes ry-slide-bottom-enter {
@@ -86,58 +146,3 @@
   }
 }
 </style>
-
-<template>
-  <div class="action-wrap">
-    <transition name="ry-fade">
-      <div class="action-mark" v-show="isShow" @click="$_cancel"></div>
-    </transition>
-    <transition name="ry-slide-bottom">
-      <div class="action-content" v-show="isShow">
-        <div class="action-row" @click="$_clickItem(item)" v-for="(item, index) in actionList" :key="index">{{ item.name }}</div>
-        <div class="action-row" @click="$_cancel">取消</div>
-      </div>
-    </transition>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'actionsheet',
-
-  props: {
-    value: {
-      type: Boolean
-    },
-    actionList: {
-      type: Array,
-      default: () => []
-    }
-  },
-
-  data () {
-    return {
-      isShow: this.value
-    }
-  },
-
-  methods: {
-    $_clickItem (item) {
-      this.$emit('on-item-click', item)
-      this.isShow = false
-    },
-    $_cancel () {
-      this.isShow = false
-    }
-  },
-
-  watch: {
-    isShow (val) {
-      this.$emit('input', val)
-    },
-    value (val) {
-      this.isShow = val
-    }
-  }
-}
-</script>

@@ -94,7 +94,6 @@ $theme-color:#4A90E2;
     -webkit-flex: 0 0 74px;
     -webkit-box-flex: 0 0 74px;
     width: 74px;
-    // padding-left: 16px;
     box-sizing: border-box;
     span {
       font-size: 14px;
@@ -120,7 +119,6 @@ $theme-color:#4A90E2;
     -webkit-box-flex: 1;
     position: relative;
     .sq-field__control {
-      // padding-left: 12px;
       outline: none;
     }
     .sq-field__button {

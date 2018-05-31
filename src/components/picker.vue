@@ -1,48 +1,48 @@
 <style lang="scss">
 $theme-color: #4a90e2;
 
-// 内容从下往上动画
-@keyframes ry-slide-bottom-enter {
-  from {
-    transform: translate3d(0, 100%, 0);
-  }
-}
+// // 内容从下往上动画
+// @keyframes ry-slide-bottom-enter {
+//   from {
+//     transform: translate3d(0, 100%, 0);
+//   }
+// }
 
-@keyframes ry-slide-bottom-leave {
-  to {
-    transform: translate3d(0, 100%, 0);
-  }
-}
-.ry-slide-bottom {
-  &-enter-active {
-    animation: ry-slide-bottom-enter .3s both ease;
-  }
+// @keyframes ry-slide-bottom-leave {
+//   to {
+//     transform: translate3d(0, 100%, 0);
+//   }
+// }
+// .ry-slide-bottom {
+//   &-enter-active {
+//     animation: ry-slide-bottom-enter .3s both ease;
+//   }
 
-  &-leave-active {
-    animation: ry-slide-bottom-leave .3s both ease;
-  }
-}
-// 蒙层渐变动画
-@keyframes ry-fade-enter {
-  from {
-    opacity: 0;
-  }
-}
+//   &-leave-active {
+//     animation: ry-slide-bottom-leave .3s both ease;
+//   }
+// }
+// // 蒙层渐变动画
+// @keyframes ry-fade-enter {
+//   from {
+//     opacity: 0;
+//   }
+// }
 
-@keyframes ry-fade-leave {
-  to {
-    opacity: 0;
-  }
-}
-.ry-fade {
-  &-enter-active {
-    animation: ry-fade-enter .3s both ease;
-  }
+// @keyframes ry-fade-leave {
+//   to {
+//     opacity: 0;
+//   }
+// }
+// .ry-fade {
+//   &-enter-active {
+//     animation: ry-fade-enter .3s both ease;
+//   }
 
-  &-leave-active {
-    animation: ry-fade-leave .3s both ease;
-  }
-}
+//   &-leave-active {
+//     animation: ry-fade-leave .3s both ease;
+//   }
+// }
 
 .top-line {
   position: relative;
@@ -79,96 +79,99 @@ $theme-color: #4a90e2;
   }
 }
 
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  z-index: 1000;
-}
-.content {
-  z-index: 1001;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
+// .mask {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba(0, 0, 0, .5);
+//   z-index: 1000;
+// }
+// .content {
+//   z-index: 1001;
+//   position: fixed;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   text-align: center;
+//   background-color: #fff;
+.sq-picker {
   text-align: center;
   background-color: #fff;
-  .header {
-    display: flex;
-    min-height: 50px;
-    line-height: 50px;
-    :nth-child(1) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
-    :nth-child(2) {
-      flex: 1;
-    }
-    :nth-child(3) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
+}
+.sq-picker__header {
+  display: flex;
+  min-height: 50px;
+  line-height: 50px;
+  :nth-child(1) {
+    width: 80px;
+    flex: 0 0 80px;
+    color: $theme-color;
+    font-size: 16px;
   }
-  .body {
-    height: 240px;
-    line-height: 48px;
+  :nth-child(2) {
+    flex: 1;
+  }
+  :nth-child(3) {
+    width: 80px;
+    flex: 0 0 80px;
+    color: $theme-color;
+    font-size: 16px;
+  }
+}
+.sq-picker__body {
+  height: 240px;
+  line-height: 48px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  .wrapper {
+    flex: 1;
     position: relative;
-    display: flex;
-    background-color: #fff;
-    overflow: hidden;
-    .wrapper {
-      flex: 1;
-      position: relative;
+    height: 100%;
+    .item-mask {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      .item-mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
-          linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
-        background-position: top, bottom;
-        background-size: 100% 96px;
-        background-repeat: no-repeat;
-        z-index: 1004;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .line {
-        width: 100%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+      background-position: top, bottom;
+      background-size: 100% 96px;
+      background-repeat: no-repeat;
+      z-index: 1004;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .line {
+      width: 100%;
+      height: 48px;
+      position: absolute;
+      left: 0;
+      top: 96px;
+      z-index: 1003;
+    }
+    .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1001;
+      .item {
         height: 48px;
-        position: absolute;
-        left: 0;
-        top: 96px;
-        z-index: 1003;
-      }
-      .content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1001;
-        .item {
-          height: 48px;
-          &.bottom-line {
-            &:last-child::after {
-              border: 0;
-            }
+        &.bottom-line {
+          &:last-child::after {
+            border: 0;
           }
         }
       }
     }
   }
 }
+// }
 @keyframes quan {
   from {
     transform: rotate(0deg);
@@ -192,36 +195,35 @@ $theme-color: #4a90e2;
 </style>
 
 <template>
-  <div class="picker">
-    <transition name="ry-fade">
-      <div class="mask" v-show="value" @click="$_cancel"></div>
-    </transition>
-    <transition name="ry-slide-bottom">
-      <div class="content" v-show="value">
-        <div class="header bottom-line">
-          <div @click="$_cancel">{{ cancelButtonText }}</div>
-          <div>{{ title }}</div>
-          <div @click="$_confirm">{{ confirmButtonText }}</div>
+  <div class="sq-picker">
+    <div class="sq-picker__header bottom-line" v-show="showToolbar">
+      <div @click="$_cancel">{{ cancelButtonText }}</div>
+      <div>{{ title }}</div>
+      <div @click="$_confirm">{{ confirmButtonText }}</div>
+    </div>
+    <div class="sq-picker__body">
+      <div class="wrapper" ref="wrapper">
+        <div
+          class="content"
+          :style="{
+            transform: `translate3d(0px, ${translateY}px, 0px)`,
+            transition: `transform ${transitionTime}s`
+          }"
+        >
+          <div class="item" v-for="(item, index) in list" :key="index">{{ item }}</div>
         </div>
-        <div class="body">
-          <div class="wrapper" ref="wrapper">
-            <div class="content" :style="{transform: `translate3d(0px, ${translateY}px, 0px)`, transition: `transform ${transitionTime}s`}">
-              <div class="item" v-for="(item, index) in list" :key="index">{{ item }}</div>
-            </div>
-            <div class="item-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
-              <div class="mask-loading loading-icon" v-show="loading"></div>
-            </div>
-            <div class="line top-line bottom-line"></div>
-          </div>
+        <div class="item-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
+          <div class="mask-loading loading-icon" v-show="loading"></div>
         </div>
+        <div class="line top-line bottom-line"></div>
       </div>
-    </transition>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'picker',
+  name: 'sq-picker',
 
   props: {
     cancelButtonText: {
@@ -240,8 +242,9 @@ export default {
       type: String,
       default: ''
     },
-    value: {
-      type: Boolean
+    showToolbar: {
+      type: Boolean,
+      default: false
     },
     list: {
       type: Array,

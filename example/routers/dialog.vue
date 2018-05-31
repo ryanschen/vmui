@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <button @click="showToast">alert</button>
-    <button @click="showToastsuccess">confirm</button>
+  <div class="demo-page-wrap">
+    <h4>alert</h4>
+    <sq-button type="primary" @click="showToast">alert</sq-button>
+
+    <h4>confirm</h4>
+    <sq-button type="primary" @click="showToastsuccess">confirm</sq-button>
   </div>
 </template>
 

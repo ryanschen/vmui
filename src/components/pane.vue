@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: 'tab-pane',
+  /**
+   * name在tabs组件逻辑引用，若修改name值，则tabs中需相应修改
+   */
+  name: 'sq-tabpane',
 
   props: {
     name: String,

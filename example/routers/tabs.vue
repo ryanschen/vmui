@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="demo-page-wrap">
     <sq-tabs active="name2">
       <sq-pane label="标签一" name="name1">标签一的内容</sq-pane>
       <sq-pane label="标签二" name="name2">标签二的内容</sq-pane>

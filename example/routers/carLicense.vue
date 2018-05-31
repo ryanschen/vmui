@@ -1,13 +1,13 @@
 <template>
-  <div class="keyboard">
-    <sq-keyboard
+  <div class="demo-page-wrap">
+    <sq-carlicense
       ref="carkeyboardWrapper"
       :provinceNameProp="provName"
       :carNumberProp="carNumber"
       placeholder="请输入车牌号"
     >
-    </sq-keyboard>
-    <input type="button" value="getValue" @click="getValue">：{{ value }}
+    </sq-carlicense>
+    <sq-button type="primary" @click="getValue">{{ value }}</sq-button>
   </div>
 </template>
 

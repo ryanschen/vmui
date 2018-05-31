@@ -1,15 +1,12 @@
 <template>
- <!-- class="demo-page-wrap" -->
   <div>
-    <sq-swiper>
-      
-    </sq-swiper>
+    swiperItem
   </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'swiper-item',
 
   data () {
     return {
@@ -20,5 +17,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 </style>

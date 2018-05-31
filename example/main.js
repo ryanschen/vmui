@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import SqDemo from '@/components/demo'
 
-import SqKeyboard from '@/components/CarLicense'
+import SqCarlicense from '@/components/carlicense'
 import SqButton from '@/components/button'
 import SqPane from '@/components/pane'
 import SqTabs from '@/components/tabs'
@@ -23,7 +23,7 @@ import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
 Vue.component('SqDemo', SqDemo)
 
-Vue.component('SqKeyboard', SqKeyboard)
+Vue.component('SqCarlicense', SqCarlicense)
 Vue.component('SqButton', SqButton)
 Vue.component('SqPane', SqPane)
 Vue.component('SqTabs', SqTabs)

@@ -1,15 +1,15 @@
 <template>
-  <div>
+  <div class="demo-page-wrap">
     <sq-popup v-model="isShowDefault">default</sq-popup>
-    <button @click="isShowDefault = !isShowDefault">isShowDefault</button>
+    <sq-button type="primary" @click="isShowDefault = !isShowDefault">isShowDefault</sq-button>
     <sq-popup v-model="isShowLeft" position="left">left</sq-popup>
-    <button @click="isShowLeft = !isShowLeft">isShowLeft</button>
+    <sq-button type="primary" @click="isShowLeft = !isShowLeft">isShowLeft</sq-button>
     <sq-popup v-model="isShowRight" position="right">right</sq-popup>
-    <button @click="isShowRight = !isShowRight">isShowRight</button>
+    <sq-button type="primary" @click="isShowRight = !isShowRight">isShowRight</sq-button>
     <sq-popup v-model="isShowTop" position="top">top</sq-popup>
-    <button @click="isShowTop = !isShowTop">isShowTop</button>
+    <sq-button type="primary" @click="isShowTop = !isShowTop">isShowTop</sq-button>
     <sq-popup v-model="isShowBottom" position="bottom">bottom</sq-popup>
-    <button @click="isShowBottom = !isShowBottom">isShowBottom</button>
+    <sq-button type="primary" @click="isShowBottom = !isShowBottom">isShowBottom</sq-button>
   </div>
 </template>
 
