@@ -12,16 +12,36 @@
       height: 200px;
       display: inline-block;
       &:nth-child(1) {
-        background-color: red;
+        background-color: lightblue;
       }
       &:nth-child(2) {
-        background-color: yellow;
+        background-color: teal;
       }
       &:nth-child(3) {
-        background-color: blue;
+        background-color: lightskyblue;
       }
       &:nth-child(4) {
-        background-color: green;
+        background-color: lightgreen;
+      }
+    }
+  }
+  .swiper-point-wrap {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    display: flex;
+    .point-item {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: 1px solid #fff;
+      background-color: transparent;
+      &.point-active {
+        background-color: #fff;
+      }
+      &~.point-item {
+        margin-left: 6px;
       }
     }
   }
@@ -50,6 +70,18 @@
         {{ index }}
       </div>
     </div>
+
+    <div class="swiper-point-wrap">
+      <div
+        v-for="(item, index) in list"
+        :key="index"
+        class="point-item"
+        :class="{
+          'point-active': index === currentIndex || index === 0 && currentIndex === count
+        }"
+      >
+      </div>
+    </div>
   </div>
 </template>
 
@@ -57,17 +89,29 @@
 export default {
   name: '',
 
+  props: {
+    speedTimeProp: {
+      type: [ String, Number ],
+      default: 3000
+    },
+    speedXProp: {
+      type: [ String, Number ],
+      default: 300
+    },
+    list: {
+      type: Array,
+      default: () => [1, 2, 3, 4]
+    }
+  },
+
   data () {
     return {
-      list: [
-        1, 2, 3, 4
-      ],
+      speedTime: this.speedTimeProp,
+      speedX: this.speedXProp,
       currentIndex: 0,
-      offsetWidth: 375,
+      offsetWidth: 0,
       translateX: 0,
-      speedX: 300,
       count: 0,
-      speedTime: 2000,
       firstWrap: 0,
       firstSpeedX: 300
     }
@@ -75,12 +119,7 @@ export default {
 
   methods: {
     autoPlay () {
-      const {
-        // autoPlay,
-        speedTime,
-        offsetWidth,
-        count
-      } = this
+      const { speedTime, offsetWidth, count } = this
 
       this.timer = setInterval(() => {
         if (this.currentIndex === count - 1) {
