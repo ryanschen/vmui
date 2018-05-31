@@ -35,7 +35,7 @@
       ref="wrap"
       :style="{
         'transform': `translateX(${translateX}px)`,
-        'transition': `transform ${speed}s`
+        'transition': `transform ${speedX}ms`
       }"
     >
       <div
@@ -43,7 +43,8 @@
         :key="index"
         class="item"
         :style="{
-          'transform': (index === 0 && index2 === 4) ? `translateX(1500px)` : ''
+          'transform': (index === 0 && currentIndex === 4) ? `translateX(${firstWrap}px)` : '',
+          'transition': `transform ${firstSpeedX}ms`
         }"
       >
         {{ index }}
@@ -61,28 +62,61 @@ export default {
       list: [
         1, 2, 3, 4
       ],
-      index2: 0,
-      width: 375,
+      currentIndex: 0,
+      offsetWidth: 375,
       translateX: 0,
-      speed: 0.5
+      speedX: 300,
+      count: 0,
+      speedTime: 2000,
+      firstWrap: 0,
+      firstSpeedX: 300
     }
   },
 
-  methods: {},
+  methods: {
+    autoPlay () {
+      const {
+        // autoPlay,
+        speedTime,
+        offsetWidth,
+        count
+      } = this
+
+      this.timer = setInterval(() => {
+        if (this.currentIndex === count - 1) {
+          this.firstSpeedX = 0
+          this.firstWrap = offsetWidth * count
+        }
+
+        if (this.currentIndex === count) {
+          this.currentIndex = 0
+
+          this.firstSpeedX = 0
+          this.firstWrap = 0
+
+          this.speedX = 0
+          this.translateX = 0
+
+          setTimeout(() => {
+            this.speedX = 300
+            this.translateX = -offsetWidth * ++this.currentIndex
+          }, 100)
+          return
+        }
+
+        if (this.speedX === 0) {
+          this.speedX = 300
+        }
+        this.translateX = -offsetWidth * ++this.currentIndex
+      }, speedTime)
+    }
+  },
 
   mounted () {
-    setInterval(() => {
-      if (this.index2 === 4) {
-        this.index2 = 0
-      }
-      this.index2 = this.index2 + 1
-      // if (this.index2 === 1) {
-      //   this.speed = 0
-      // } else {
-      //   this.speed = 0.5
-      // }
-      this.translateX = -this.width * this.index2
-    }, 2000)
+    this.offsetWidth = this.$el.offsetWidth
+    this.count = this.list.length
+
+    this.autoPlay()
   }
 }
 </script>
