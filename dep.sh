@@ -5,12 +5,12 @@ set -e
 
 # npm run build
 
-# cd dist
+cd dist
 
 git init
 git add -A
 git commit -m 'init-demo'
 
-git push -f git@github.com:ryanschen/docs-mui-vue.git master:gh-pages
+git push -f git@github.com:ryanschen/vmui.git master:gh-pages
 
 cd -
