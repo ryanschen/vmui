@@ -1,13 +1,12 @@
 <template>
   <div class="demo-page-wrap">
     <sq-carlicense
-      ref="carkeyboardWrapper"
-      :provinceNameProp="provName"
-      :carNumberProp="carNumber"
+      :province-name.sync="provName"
+      :car-number.sync="carNumber"
       placeholder="请输入车牌号"
     >
     </sq-carlicense>
-    <sq-button type="primary" @click="getValue">{{ value }}</sq-button>
+    {{ provName }}{{ carNumber }}
   </div>
 </template>
 
@@ -18,16 +17,11 @@ export default {
   data () {
     return {
       provName: '沪',
-      carNumber: '',
-      value: ''
+      carNumber: ''
     }
   },
 
-  methods: {
-    getValue () {
-      this.value = this.$refs.carkeyboardWrapper.getValue()
-    }
-  }
+  methods: {}
 }
 </script>
 

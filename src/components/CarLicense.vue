@@ -66,11 +66,11 @@ export default {
   name: 'sq-carlicense',
 
   props: {
-    provinceNameProp: {
+    provinceName: {
       type: String,
       required: true
     },
-    carNumberProp: {
+    carNumber: {
       type: String,
       default: ''
     },
@@ -97,34 +97,24 @@ export default {
       tipText: '',
       tipPosX: '0',
       tipPosY: '-100px',
-      provinceName: this.provinceNameProp, // 省份
       provinceList: [
-        ['京', '津', '冀', '晋', '蒙', '辽', '吉', '黑'],
-        ['沪', '苏', '浙', '皖', '闽', '赣', '鲁', '豫'],
-        ['鄂', '湘', '粤', '桂', '琼', '渝', '川', '贵'],
-        ['云', '藏', '陕', '甘', '青', '宁', '新', '']
+        ['京', '津', '冀', '晋', '蒙', '辽', '吉', '黑'], ['沪', '苏', '浙', '皖', '闽', '赣', '鲁', '豫'],
+        ['鄂', '湘', '粤', '桂', '琼', '渝', '川', '贵'], ['云', '藏', '陕', '甘', '青', '宁', '新', '']
       ],
       keyboardList: [
-        [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
-        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U'],
-        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-        ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], ['Q', 'W', 'E', 'R', 'T', 'Y', 'U'],
+        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'], ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
       ],
       isNumKeyDisabled: true, // 设置数字键盘是否含disabled样式属性
       isEnKeyDisabled: false, // 设置英文键盘是否含disabled样式属性
       provinceDisplay: 'none', // 设置省份键盘是否显示 的 display 属性
       keyBoardDisplay: 'none', // 设置数字英文键盘是否显示的 display 属性
-      carNumber: this.carNumberProp, // 发证机关
       isShowDelIcon: false, // 是否显示删除图标
       hasEnergyText: false // 是否显示新能源文字提示
     }
   },
 
   methods: {
-    getValue () {
-      return this.provinceName + this.carNumber
-    },
-
     closeAllKeyboard (event) {
       if (!this.$refs.hasOwnProperty('keyboardWrapper') || !this.$refs.keyboardWrapper) {
         return
@@ -142,7 +132,7 @@ export default {
     },
 
     cliackDeleteHandle () {
-      this.carNumber = this.carNumber.slice(0, 1)
+      this.$emit('update:carNumber', this.carNumber.slice(0, 1))
     },
 
     clickProvinceNameHandle () {
@@ -161,11 +151,16 @@ export default {
 
     getProvince (event) {
       event.stopPropagation()
+
       const nodeName = event.target.nodeName.toLocaleLowerCase()
+
       if (nodeName === 'li') {
-        this.provinceName = event.target.innerText
-        this.carNumber = ''
-        this.$emit('set-province', this.provinceName)
+        const text = event.target.innerText
+
+        this.$emit('update:provinceName', text)
+        this.$emit('update:carNumber', '')
+
+        this.$emit('set-province', text)
         this.showEnNumberBoard()
       }
     },
@@ -175,15 +170,18 @@ export default {
       const nodeName = event.target.nodeName.toLocaleLowerCase()
       const isDisabled = event.target.className.indexOf('disabled') !== -1
       const isDel = event.target.className.indexOf('del') !== -1
+
       if (isDel) {
-        this.carNumber = this.carNumber.slice(0, -1)
+        this.$emit('update:carNumber', this.carNumber.slice(0, -1))
         return
       }
+
       if (nodeName === 'li') {
         if (isDisabled) { return }
 
         const textContent = event.target.textContent
         const position = event.target.getBoundingClientRect()
+
         this.tipText = textContent
         this.tipPosX = (position.left < 10
           ? 12
@@ -196,9 +194,10 @@ export default {
         }, 250)
 
         if (this.carNumber.length < 7) {
-          this.carNumber = this.carNumber + event.target.innerText
+          this.$emit('update:carNumber', this.carNumber + event.target.innerText)
         }
       }
+
       if (this.keyBoardDisplay === 'none') {
         this.showEnNumberBoard()
       }
@@ -212,12 +211,14 @@ export default {
         this.isEnKeyDisabled && (this.isEnKeyDisabled = false)
         this.isShowDelIcon && (this.isShowDelIcon = false)
       }
+
       if (this.carNumber.length > 0) {
         this.isNumKeyDisabled && (this.isNumKeyDisabled = false)
         !this.isEnKeyDisabled && (this.isEnKeyDisabled = true)
         this.carNumber.length > 1 && !this.isShowDelIcon && (this.isShowDelIcon = true)
         this.carNumber.length === 1 && this.isShowDelIcon && (this.isShowDelIcon = false)
       }
+
       // this.carNumber 为 第2 到 第8位
       // 严格校验新能源车牌号码的约束规则：
       // 沪【第1位】  A【第2位】  D【第3位】  K【第4位】   1【第5位】   2【第6位】   3【第7位】   4【第8位】
@@ -234,14 +235,6 @@ export default {
       } else {
         this.closeBtnText === '完成' && (this.closeBtnText = this.closeButtonText)
       }
-    },
-
-    provinceNameProp (newValue, oldValue) {
-      this.provinceName = this.provinceNameProp
-    },
-
-    carNumberProp (newValue, oldValue) {
-      this.carNumber = this.carNumberProp
     }
   },
 
