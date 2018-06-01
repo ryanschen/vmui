@@ -10,13 +10,8 @@ export default {
 
   props: {
     value: {
-      type: [ String, Number ],
+      type: null,
       required: true
-    }
-  },
-
-  data () {
-    return {
     }
   },
 
@@ -26,7 +21,6 @@ export default {
     },
 
     update (currentValue) {
-      console.log('currentValue', currentValue)
       if (currentValue) {
         this.$emit('input', currentValue)
         return
@@ -34,11 +28,22 @@ export default {
       const children = this.getChildrens()
 
       children.forEach(item => {
-        console.log('item:', item)
         if (this.value === item.name) {
           item.currentValue = this.value
         }
       })
+    }
+  },
+
+  watch: {
+    value (val) {
+      const children = this.getChildrens()
+
+      children.forEach(item => {
+        item.currentValue = val
+      })
+
+      this.$emit('change', val)
     }
   }
 }

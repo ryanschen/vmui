@@ -1,13 +1,23 @@
 <template>
   <div class="demo-page-wrap">
-      <!-- v-model="radioValue" -->
     <sq-radiogroup
       v-model="radioValue"
+      @change="change"
     >
-      <sq-radio name="1">苹果</sq-radio>
-      <sq-radio name="2">香蕉</sq-radio>
-      <sq-radio name="3">哈密瓜</sq-radio>
+      <sq-radio name="pg">苹果</sq-radio>
+      <sq-radio name="xj">香蕉</sq-radio>
+      <sq-radio name="hmg">哈密瓜</sq-radio>
     </sq-radiogroup>
+    <p>{{ radioValue }}</p>
+    <p>
+      <sq-button type="primary" @click="radioValue = 'pg'">苹果</sq-button>
+    </p>
+    <p>
+      <sq-button type="primary" @click="radioValue = 'xj'">香蕉</sq-button>
+    </p>
+    <p>
+      <sq-button type="primary" @click="radioValue = 'hmg'">哈密瓜</sq-button>
+    </p>
   </div>
 </template>
 
@@ -17,16 +27,13 @@ export default {
 
   data () {
     return {
-      radioValue: '3'
+      radioValue: 'hmg'
     }
   },
 
   methods: {
-  },
-
-  watch: {
-    radioValue (val, oldVal) {
-      console.log('val', val, oldVal)
+    change (name) {
+      this.$toast.text(`当前选中的值为${name}`, 2000)
     }
   }
 }
