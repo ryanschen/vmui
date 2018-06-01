@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'Keyboard',
+  name: 'carlicense',
 
   data () {
     return {

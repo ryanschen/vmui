@@ -1,8 +1,13 @@
 <template>
   <div class="demo-page-wrap">
-    <sq-radio checked>苹果</sq-radio>
-    <sq-radio>香蕉</sq-radio>
-    <sq-radio>哈密瓜</sq-radio>
+      <!-- v-model="radioValue" -->
+    <sq-radiogroup
+      v-model="radioValue"
+    >
+      <sq-radio name="1">苹果</sq-radio>
+      <sq-radio name="2">香蕉</sq-radio>
+      <sq-radio name="3">哈密瓜</sq-radio>
+    </sq-radiogroup>
   </div>
 </template>
 
@@ -12,10 +17,18 @@ export default {
 
   data () {
     return {
+      radioValue: '3'
     }
   },
 
-  methods: {}
+  methods: {
+  },
+
+  watch: {
+    radioValue (val, oldVal) {
+      console.log('val', val, oldVal)
+    }
+  }
 }
 
 </script>

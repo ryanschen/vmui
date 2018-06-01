@@ -1,35 +1,99 @@
 <template>
-  <label>
-    <span style="position:relative;">
+  <label @click="change">
+    <!-- <span style="position:relative;">
       <span class="label ry-radio blue"></span>
-      <input type="radio" name="carRadio" :checked="checked">
-    </span>
-    <slot>{{label}}</slot>
+      <input type="radio" :checked="name == currentValue">
+    </span> -->
+    <div class="sq-agree__checkbox" :class="[name == currentValue ? 'sq-agree__checked' : '']"></div>
+    <slot></slot>
   </label>
 </template>
 
 <script>
 export default {
+  /**
+   * name在radioGroup组件逻辑引用，若修改name值，则radioGroup中需相应修改
+   */
   name: 'sq-radio',
 
   props: {
-    label: String,
-    checked: {
-      type: Boolean,
-      default: false
+    name: {
+      type: String,
+      required: true
     }
+    // ,
+    // checked: {
+    //   type: Boolean,
+    //   default: false
+    // }
   },
 
   data () {
     return {
+      currentValue: ''
     }
   },
 
-  methods: {}
+  methods: {
+    change () {
+      console.log(222, this.name)
+      this.$parent.update(this.name)
+    }
+  },
+
+  mounted () {
+    this.$parent.update()
+  }
 }
 
 </script>
 <style lang='scss'>
+$theme-color: #0097DF;
+
+// .sq-agree-wrap {
+//   display: -webkit-box;
+//   display: -moz-box;
+//   display: -webkit-flex;
+//   display: -ms-flexbox;
+//   display: box;
+//   display: flex;
+.sq-agree__checkbox {
+  padding-right: 24px;
+  position: relative;
+  &::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: #D8D8D8;
+    position: absolute;
+    left: 0;
+    top: 3px;
+    border-radius: 50%;
+  }
+  &::after {
+    content: '';
+    display: table;
+    width: 4px;
+    height: 8px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg) scale(0);
+    transition: all .2s ease-in-out;
+  }
+}
+// }
+.sq-agree__checked.sq-agree__checkbox::before {
+  background-color: $theme-color;
+}
+.sq-agree__checked.sq-agree__checkbox::after {
+  transform: rotate(45deg) scale(1);
+}
+//----------------
 input {
   margin: 0;
 }

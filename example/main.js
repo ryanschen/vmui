@@ -12,6 +12,7 @@ import SqTabs from '@/components/tabs'
 import SqField from '@/components/field'
 import SqFieldgroup from '@/components/fieldGroup'
 import SqRadio from '@/components/radio'
+import SqRadiogroup from '@/components/radioGroup'
 import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
 import SqPicker from '@/components/picker'
@@ -29,6 +30,7 @@ Vue.component('SqPane', SqPane)
 Vue.component('SqTabs', SqTabs)
 Vue.component('SqField', SqField)
 Vue.component('SqFieldgroup', SqFieldgroup)
+Vue.component('SqRadiogroup', SqRadiogroup)
 Vue.component('SqRadio', SqRadio)
 Vue.component('SqActionsheet', SqActionsheet)
 Vue.component('SqAgree', SqAgree)
