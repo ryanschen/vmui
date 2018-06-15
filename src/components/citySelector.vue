@@ -2,22 +2,23 @@
   <div class="citySelector" v-show="currentVisible">
     <div class="main">
       <div class="close-bar">
-        <i class="iconfont icon-shutdown" @click="close()"></i>
+        <i class="iconfont icon-error" @click="close()"></i>
       </div>
       <div>
         <div class="ulWrap">
-          <h2 @click="toggleCurrentTab(0)" :class="{current: currentTab === 0}">
+          <h2 class="title" @click="toggleCurrentTab(0)" :class="{current: currentTab === 0}">
             {{currentProvince.name ? currentProvince.name : '请选择'}}
           </h2>
-          <h2 @click="toggleCurrentTab(1)" :class="{current: currentTab === 1}">
+          <h2 class="title" @click="toggleCurrentTab(1)" :class="{current: currentTab === 1}">
             {{currentProvince.id ? city.name ? city.name : '请选择' : ''}}
           </h2>
           <div>
             <!-- <loading v-show="loading" /> -->
             <span v-show="loading">加载中。。。</span>
           </div>
-          <ul class="provinceList" v-if="currentTab === 0">
+          <ul class="ul provinceList" v-if="currentTab === 0">
             <li
+              class="li"
               v-for="(item, index) in provinceList"
               @click="selectProvince(item)"
               :class="{current: currentProvince.id === item.id}"
@@ -26,8 +27,9 @@
               {{item.name}}
             </li>
           </ul>
-          <ul class="cityList" v-if="currentProvince.id && currentTab === 1">
+          <ul class="ul cityList" v-if="currentProvince.id && currentTab === 1">
             <li
+              class="li"
               v-for="(item, index) in cityList"
               :key="index"
               @click="selectCity(item)"
@@ -166,21 +168,21 @@ export default {
     box-sizing: border-box;
     overflow: hidden;
 
-    h2 {
+    .title {
       float: left;
       padding: 0 25px;
       font-weight: normal;
       height: 48px;
       line-height: 48px;
       box-sizing: border-box;
-
+      margin: 0;
       &.current {
         border-bottom: 2px solid #358ED7;
       }
     }
   }
 
-  ul {
+  .ul {
     list-style: none;
     position: absolute;
     width: 100%;
@@ -190,8 +192,9 @@ export default {
     bottom: 0;
     left: 0;
     box-sizing: border-box;
-
-    li {
+    margin: 0;
+    padding: 0;
+    .li {
       height: 48px;
       line-height: 48px;
       padding: 0 15px;

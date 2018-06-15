@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2 style="margin:0;text-align:center;">{{ msg }}</h2>
+    <h3 style="margin:0;text-align:center;">{{ msg }}</h3>
     <div style="overflow:scroll;" ref="wrapper" :style="{ height: wrapperHeight + 'px' }">
       <sq-loadmore
         :loading="loading"
@@ -28,7 +28,7 @@ export default {
   data () {
     return {
       loading: false,
-      msg: '只支持手机模式下',
+      msg: '此例请用手机查看',
       list: [],
       wrapperHeight: 0,
       isFinishedLoad: false

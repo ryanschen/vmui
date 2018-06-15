@@ -29,6 +29,8 @@ import SqLoadmore from '@/components/loadmore'
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
 
+import '../src/assets/icon/iconfont.css'
+
 const components = [
   SqDemo,
   SqCarlicense,

@@ -112,7 +112,6 @@ export default {
 </script>
 
 <style lang="scss">
-// @import './icon/iconfont';
 .sq-dialog-enter-active, .sq-dialog-leave-active {
   transition: opacity .5s;
 }

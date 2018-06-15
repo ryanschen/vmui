@@ -43,8 +43,8 @@ export default {
       return [
         // 'sq-toast__icon',
         {
-          [`sq-toast__icon icon-sqbx icon-shuruzhengque`]: this.type === 'success',
-          [`sq-toast__icon icon-sqbx icon-cuowu`]: this.type === 'error',
+          [`sq-toast__icon iconfont icon-checkmark`]: this.type === 'success',
+          [`sq-toast__icon iconfont icon-error`]: this.type === 'error',
           [`sq-toast__icon iconfont icon-loading`]: this.type === 'loading'
         }
       ]
@@ -62,8 +62,27 @@ export default {
 </script>
 
 <style lang="scss">
-@import './icon/iconfont';
-@import './icon-new/iconfont';
+@keyframes ani-load-loop {
+  0% {
+      -webkit-transform: rotate(0);
+      transform: rotate(0)
+  }
+
+  50% {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg)
+  }
+
+  to {
+      -webkit-transform: rotate(1turn);
+      transform: rotate(1turn)
+  }
+}
+
+.icon-loading {
+  animation: ani-load-loop 1s linear infinite;
+}
+
 .sq-toast-enter-active, .sq-toast-leave-active {
   transition: opacity .5s;
 }

@@ -53,7 +53,7 @@ export default {
     rightIconClasses () {
       return [
         {
-          'icon-cuohao': this.mode === 'close',
+          'icon-error': this.mode === 'close',
           'icon-arrow-right': this.mode === 'link'
         }
       ]
@@ -117,8 +117,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/icon/iconfont.scss';
-
 @keyframes move {
   to {
     transform: translate3d(-100%, 0, 0);
