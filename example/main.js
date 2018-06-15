@@ -23,6 +23,7 @@ import SqPopup from '@/components/popup'
 import SqSwiper from '@/components/swiper'
 import SqChildinsuranceCell from '@/components/childinsuranceCell'
 import SqNoticeBar from '@/components/noticeBar'
+import SqCitySelector from '@/components/citySelector'
 // import SqCheckbox from '@/components/checkbox'
 
 import SqToast from '@/components/toast/index.js'
@@ -46,35 +47,16 @@ const components = [
   SqPopup,
   SqSwiper,
   SqChildinsuranceCell,
-  SqNoticeBar
+  SqNoticeBar,
+  SqCitySelector
 ]
 
 components.forEach(component => {
   Vue.component(component.name, component)
 })
 
-// Vue.component('SqCarlicense', SqCarlicense)
-// Vue.component('SqButton', SqButton)
-// Vue.component('SqPane', SqPane)
-// Vue.component('SqTabs', SqTabs)
-// Vue.component('SqField', SqField)
-// Vue.component('SqCell', SqCell)
-// Vue.component('SqCellgroup', SqCellgroup)
-// Vue.component('SqFieldgroup', SqFieldgroup)
-// Vue.component('SqRadiogroup', SqRadiogroup)
-// Vue.component('SqRadio', SqRadio)
-// Vue.component('SqActionsheet', SqActionsheet)
-// Vue.component('SqAgree', SqAgree)
-// Vue.component('SqPicker', SqPicker)
-// Vue.component('SqPopup', SqPopup)
-// Vue.component('SqSwiper', SqSwiper)
-// Vue.component('SqChildinsuranceCell', SqChildinsuranceCell)
-// Vue.component('SqNoticeBar', SqNoticeBar)
-// Vue.component('SqCheckbox', SqCheckbox)
-
 Vue.use(SqToast)
 Vue.use(SqDialog)
-
 
 Vue.config.productionTip = false
 

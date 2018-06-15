@@ -6,7 +6,7 @@
       right-text="投保"
       v-model="exemptSelected"
     />
-    <sq-button @click="click">123</sq-button>
+    <sq-button @click="click">{{ exemptSelected }}</sq-button>
   </div>
 </template>
 

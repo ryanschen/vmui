@@ -1,20 +1,26 @@
 <template>
-  <div class="sq-notice-bar">
+  <div class="sq-notice-bar" v-show="isShowNoticeBar">
     <div class="sq-notice-bar-icon">
-      <slot name="left-icon"></slot>
+      <slot name="left-icon">
+        <i class="iconfont icon-gantanhao-full"></i>
+      </slot>
     </div>
     <div class="sq-notice-bar-content" ref="content">
       <div
         ref="wrap"
         class="sq-notice-bar-text"
-        :data-text="text"
         :style="styles"
         :class="[animationClass]"
-        @animationend="onAnimationEnd"
-        @webkitAnimationEnd="onAnimationEnd"
+        @animationend="$_onAnimationEnd"
+        @webkitAnimationEnd="$_onAnimationEnd"
       >
         <slot>{{ text }}</slot>
       </div>
+    </div>
+    <div class="sq-notice-bar-close" @click="$_close">
+      <slot name="right-icon">
+        <i class="iconfont" :class="rightIconClasses"></i>
+      </slot>
     </div>
   </div>
 </template>
@@ -24,6 +30,12 @@ export default {
   name: 'sq-notice-bar',
 
   props: {
+    mode: {
+      type: String,
+      validator (value) {
+        return ['', 'close', 'link'].indexOf(value) !== -1
+      }
+    },
     text: {
       type: String
     },
@@ -38,6 +50,14 @@ export default {
   },
 
   computed: {
+    rightIconClasses () {
+      return [
+        {
+          'icon-cuohao': this.mode === 'close',
+          'icon-arrow-right': this.mode === 'link'
+        }
+      ]
+    },
     styles () {
       return {
         paddingLeft: this.firstRound ? 0 : this.contentWidth + 'px',
@@ -53,12 +73,18 @@ export default {
       animationDuration: 0,
       contentWidth: 0,
       offsetWidth: 0,
-      animationClass: ''
+      animationClass: '',
+      isShowNoticeBar: true
     }
   },
 
   methods: {
-    onAnimationEnd () {
+    $_close () {
+      if (this.mode === 'close') {
+        this.isShowNoticeBar = false
+      }
+    },
+    $_onAnimationEnd () {
       this.firstRound = false
       this.animationDuration = (this.contentWidth + this.offsetWidth) / this.deep
       this.animationClass = 'sq-notice-bar-move-infinite'
@@ -91,6 +117,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/icon/iconfont.scss';
+
 @keyframes move {
   to {
     transform: translate3d(-100%, 0, 0);
@@ -106,20 +134,17 @@ export default {
   display: flex;
   height: 30px;
   background: #4a4c5b;
+  color: #fffefe;
   line-height: 1.5;
   padding: 8px 15px;
   align-items: center;
   box-sizing: border-box;
   &-icon {
-    flex: 0 0 20px;
-    width: 20px;
-    height: 20px;
-    background-color: #fffefe;
+    max-width: 20px;
     margin-right: 5px;
   }
   &-content {
     flex: 1;
-    color: #fffefe;
     font-size: 12px;
     overflow: hidden;
   }
@@ -133,6 +158,10 @@ export default {
   }
   &-move-infinite {
     animation: move-infinite linear infinite both;
+  }
+  &-close {
+    max-width: 20px;
+    margin-left: 5px;
   }
 }
 </style>

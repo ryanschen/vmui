@@ -48,7 +48,8 @@ export default {
       list5: [
         { to: 'agree', name: 'Agree - 勾选按钮' },
         { to: 'carLicense', name: 'CarLicense - 车牌录入键盘' },
-        { to: 'childinsuranceCell', name: 'ChildinsuranceCell - 子险列表' }
+        { to: 'childinsuranceCell', name: 'ChildinsuranceCell - 子险列表' },
+        { to: 'citySelector', name: 'CitySelector - 城市选择' }
       ],
       isShow1: false,
       isShow2: false,

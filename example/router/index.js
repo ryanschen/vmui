@@ -10,6 +10,13 @@ export default new Router({
     //   component: () => import('../routers/checkbox.vue')
     // },
     {
+      path: '/citySelector',
+      meta: {
+        name: '城市选择'
+      },
+      component: () => import('../routers/citySelector.vue')
+    },
+    {
       path: '/noticeBar',
       meta: {
         name: '通告栏'
