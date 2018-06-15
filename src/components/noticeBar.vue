@@ -1,6 +1,8 @@
 <template>
   <div class="sq-notice-bar">
-    <div class="sq-notice-bar-icon"></div>
+    <div class="sq-notice-bar-icon">
+      <slot name="left-icon"></slot>
+    </div>
     <div class="sq-notice-bar-content" ref="content">
       <div
         ref="wrap"
@@ -8,10 +10,6 @@
         :data-text="text"
         :style="styles"
         :class="[animationClass]"
-        @animationstart="onAnimationStart"
-        @webkitAnimationStart="onAnimationStart"
-        @animationiteration="onAnimationIteration"
-        @webkitAnimationIteration="onAnimationIteration"
         @animationend="onAnimationEnd"
         @webkitAnimationEnd="onAnimationEnd"
       >
@@ -28,6 +26,14 @@ export default {
   props: {
     text: {
       type: String
+    },
+    delay: {
+      type: [Number, String],
+      default: 1
+    },
+    deep: {
+      type: Number,
+      default: 50
     }
   },
 
@@ -35,7 +41,7 @@ export default {
     styles () {
       return {
         paddingLeft: this.firstRound ? 0 : this.contentWidth + 'px',
-        animationDelay: '1s',
+        animationDelay: this.delay + 's',
         animationDuration: this.animationDuration + 's'
       }
     }
@@ -52,21 +58,10 @@ export default {
   },
 
   methods: {
-    onAnimationStart () {
-      console.log('startttt')
-      this.firstRound = false
-    },
-    onAnimationIteration () {
-      console.log('onAnimationIteration')
-    },
     onAnimationEnd () {
       this.firstRound = false
-      console.log(333)
-      this.$nextTick(() => {
-        console.log(22)
-        this.animationDuration = (this.contentWidth + this.offsetWidth) / 50
-        this.animationClass = 'sq-notice-bar-move-infinite'
-      })
+      this.animationDuration = (this.contentWidth + this.offsetWidth) / this.deep
+      this.animationClass = 'sq-notice-bar-move-infinite'
     }
   },
 
@@ -74,15 +69,17 @@ export default {
     text: {
       handler () {
         this.$nextTick(() => {
-          if (!this.$refs.content || !this.$refs.wrap) return
+          const contentRef = this.$refs.content
+          const wrapRef = this.$refs.wrap
+          if (!contentRef || !wrapRef) return
 
-          const contentWidth = this.$refs.content.getBoundingClientRect().width
-          const offsetWidth = this.$refs.wrap.getBoundingClientRect().width
-          console.log(offsetWidth > contentWidth)
+          const contentWidth = contentRef.getBoundingClientRect().width
+          const offsetWidth = wrapRef.getBoundingClientRect().width
+
           if (offsetWidth > contentWidth) {
             this.contentWidth = contentWidth
             this.offsetWidth = offsetWidth
-            this.animationDuration = offsetWidth / 50
+            this.animationDuration = offsetWidth / this.deep
             this.animationClass = 'sq-notice-bar-move'
           }
         })
@@ -130,15 +127,6 @@ export default {
     position: relative;
     white-space: nowrap;
     display: inline-block;
-    // &::after {
-    //   content: attr(data-text);
-    //   display: inline-block;
-    //   position: absolute;
-    //   left: 0;
-    //   right: 0;
-    //   transform: translateX(200%);
-    //   background-color: yellow;
-    // }
   }
   &-move {
     animation: move linear both;
