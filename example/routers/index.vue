@@ -26,7 +26,8 @@ export default {
         { to: 'popup', name: 'Popup - 弹出层' },
         { to: 'swiper', name: 'Swiper - 轮播' },
         { to: 'cell', name: 'Cell - 单元格' },
-        { to: 'noticeBar', name: 'NoticeBar - 通告栏' }
+        { to: 'noticeBar', name: 'NoticeBar - 通告栏' },
+        { to: 'loadmore', name: 'Loadmore - 加载更多' }
       ],
       // 表单
       list2: [
