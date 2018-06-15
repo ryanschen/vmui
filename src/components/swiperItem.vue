@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'swiper-item',
+  name: 'sq-swiper-item',
 
   data () {
     return {

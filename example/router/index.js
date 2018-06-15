@@ -10,6 +10,20 @@ export default new Router({
     //   component: () => import('../routers/checkbox.vue')
     // },
     {
+      path: '/noticeBar',
+      meta: {
+        name: '通告栏'
+      },
+      component: () => import('../routers/noticeBar.vue')
+    },
+    {
+      path: '/childinsuranceCell',
+      meta: {
+        name: '子险列表'
+      },
+      component: () => import('../routers/childinsuranceCell.vue')
+    },
+    {
       path: '/swiper',
       meta: {
         name: '轮播图'
@@ -71,6 +85,13 @@ export default new Router({
         name: '单元格'
       },
       component: () => import('../routers/field.vue')
+    },
+    {
+      path: '/cell',
+      meta: {
+        name: 'cell'
+      },
+      component: () => import('../routers/cell.vue')
     },
     {
       path: '/tabs',

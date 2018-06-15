@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'sq-checkbox',
 
   props: {
     name: {

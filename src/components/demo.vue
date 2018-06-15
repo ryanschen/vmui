@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: '',
+  name: 'sq-demo',
   props: {
     value: {
       type: Boolean
