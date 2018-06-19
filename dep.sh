@@ -9,7 +9,7 @@ cd dist
 
 git init
 git add -A
-git commit -m 'init'
+git commit -m 'update'
 
 git push -f git@github.com:ryanschen/vmui.git master:gh-pages
 

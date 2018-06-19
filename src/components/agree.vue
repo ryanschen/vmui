@@ -30,11 +30,6 @@ export default {
 $theme-color: #0097DF;
 
 .sq-agree-wrap {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
   display: flex;
   .sq-agree__checkbox {
     padding-right: 24px;
