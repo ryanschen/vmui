@@ -1,8 +1,10 @@
 <template>
-  <div class="sq-agree-wrap">
-    <div class="sq-agree__checkbox" :class="[value ? 'sq-agree__checked' : '']" @click="$_handleClick"></div>
-    <div class="sq-agree__text">
-      <slot></slot>
+  <div class="sq-agree" @click="$_Click">
+    <div class="sq-agree-wrap">
+      <span class="sq-agree-checkicon" :class="checkiconClasses"></span>
+      <span class="sq-agree-text">
+        <slot></slot>
+      </span>
     </div>
   </div>
 </template>
@@ -14,12 +16,22 @@ export default {
   props: {
     value: {
       type: Boolean,
-      default: false
+      required: true
+    }
+  },
+
+  computed: {
+    checkiconClasses () {
+      return [
+        {
+          'sq-agree-checkicon-checked': this.value
+        }
+      ]
     }
   },
 
   methods: {
-    $_handleClick (event) {
+    $_Click (event) {
       this.$emit('input', !this.value)
     }
   }
@@ -29,42 +41,47 @@ export default {
 <style lang="scss">
 $theme-color: #0097DF;
 
-.sq-agree-wrap {
-  display: flex;
-  .sq-agree__checkbox {
-    padding-right: 24px;
-    position: relative;
+.sq-agree {
+  display: inline-block;
+  a {
+    color: $theme-color;
+  }
+  &-wrap {
+    display: flex;
+    align-items: baseline;
+  }
+  &-checkicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    background: #ccc;
+    transform: translateY(-2px);
+    &-checked {
+      background-color: $theme-color;
+      &.sq-agree-checkicon {
+        &::before {
+          transform: rotate(45deg) scale(1);
+        }
+      }
+    }
     &::before {
       content: '';
-      display: block;
-      width: 18px;
-      height: 18px;
-      background-color: #D8D8D8;
-      position: absolute;
-      left: 0;
-      top: 3px;
-      border-radius: 50%;
-    }
-    &::after {
-      content: '';
-      display: table;
-      width: 4px;
-      height: 8px;
-      position: absolute;
-      top: 6px;
-      left: 6px;
+      width: .25em;
+      height: .5em;
       border: 2px solid #fff;
       border-top: 0;
       border-left: 0;
+      transition: transform .2s ease-in-out;
       transform: rotate(45deg) scale(0);
-      transition: all .2s ease-in-out;
     }
   }
-}
-.sq-agree__checked.sq-agree__checkbox::before {
-  background-color: $theme-color;
-}
-.sq-agree__checked.sq-agree__checkbox::after {
-  transform: rotate(45deg) scale(1);
+  &-text {
+    display: inline-block;
+    margin-left: 6px;
+    flex: 1;
+  }
 }
 </style>
