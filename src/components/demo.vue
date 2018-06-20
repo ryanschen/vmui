@@ -1,6 +1,15 @@
 <template>
   <div class="demo-index-wrap">
-    <p class="demo-index-title" @click="onShow" :style="{'opacity': isShow ? '0.5' : '', 'borderBottom': !isShow ? '0' : ''}">{{ title }}</p>
+    <p
+      class="demo-index-title"
+      @click="onShow"
+      :style="{
+        'opacity': isShow ? '0.5' : '',
+        'borderBottom': !isShow ? '0' : ''
+      }"
+    >
+      {{ title }}
+    </p>
     <div class="demo-index-ul-wrap" :style="{'height': isShow ? 'auto' : '0'}">
       <div class="demo-index-ul" :style="{'transform': isShow ? 'translateY(0)' : 'translateY(-50%)'}">
         <router-link class="demo-index-item" :to="item.to" v-for="(item, index) in list" :key="index">{{ item.name }}</router-link>

@@ -25,6 +25,8 @@ import SqChildinsuranceCell from '@/components/childinsuranceCell'
 import SqNoticeBar from '@/components/noticeBar'
 import SqCitySelector from '@/components/citySelector'
 import SqLoadmore from '@/components/loadmore'
+import SqDatepicker from '@/components/datepicker'
+import SqSwitch from '@/components/switch'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
@@ -51,7 +53,9 @@ const components = [
   SqChildinsuranceCell,
   SqNoticeBar,
   SqCitySelector,
-  SqLoadmore
+  SqLoadmore,
+  SqDatepicker,
+  SqSwitch
 ]
 
 components.forEach(component => {

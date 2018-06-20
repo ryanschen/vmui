@@ -1,15 +1,15 @@
 <template>
-  <div style="backgroundColor:#ddd;">
-    <sq-field placeholder="请输入姓名" v-model="name" arrow></sq-field>
-    <sq-field label="姓名" placeholder="请输入姓名" v-model="name" arrow></sq-field>
-    <sq-field label="姓名" placeholder="请输入姓名" v-model="name"></sq-field>
-    <sq-field label="姓名" placeholder="请输入姓名" v-model="name"></sq-field>
-
+  <div class="demo-page-wrap demo-field-wrap">
     <sq-fieldgroup>
       <sq-field placeholder="请输入姓名" v-model="name" arrow></sq-field>
       <sq-field label="姓名" placeholder="请输入姓名" v-model="name" arrow></sq-field>
       <sq-field label="姓名" placeholder="请输入姓名" v-model="name"></sq-field>
     </sq-fieldgroup>
+
+    <sq-field placeholder="请输入姓名" v-model="name" arrow></sq-field>
+    <sq-field label="姓名" placeholder="请输入姓名" v-model="name" arrow></sq-field>
+    <sq-field label="姓名" placeholder="请输入姓名" v-model="name"></sq-field>
+    <sq-field label="姓名" placeholder="请输入姓名" v-model="name"></sq-field>
     {{name}}
   </div>
 </template>
@@ -29,4 +29,7 @@ export default {
 
 </script>
 <style lang='scss' scoped>
+.demo-field-wrap {
+  padding: 0;
+}
 </style>

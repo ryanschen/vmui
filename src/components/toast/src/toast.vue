@@ -45,7 +45,7 @@ export default {
         {
           [`sq-toast__icon iconfont icon-checkmark`]: this.type === 'success',
           [`sq-toast__icon iconfont icon-error`]: this.type === 'error',
-          [`sq-toast__icon iconfont icon-loading`]: this.type === 'loading'
+          [`sq-toast__icon iconfont sq-toast-icon-loading icon-loading`]: this.type === 'loading'
         }
       ]
     }
@@ -79,7 +79,7 @@ export default {
   }
 }
 
-.icon-loading {
+.sq-toast-icon-loading {
   animation: ani-load-loop 1s linear infinite;
 }
 
