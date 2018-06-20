@@ -39,12 +39,13 @@ export default {
 
 </script>
 <style lang="scss">
-$theme-color: #0097DF;
+// $theme-color: #0097DF;
+$theme-color: #0083FF;
 
 .sq-agree {
   display: inline-block;
   a {
-    color: $theme-color;
+    color: #0C6AFE;
   }
   &-wrap {
     display: flex;

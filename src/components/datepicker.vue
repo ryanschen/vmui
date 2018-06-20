@@ -222,7 +222,7 @@ $theme-color: #4a90e2;
 
 <script>
 export default {
-  name: 'sq-picker',
+  name: 'sq-datepicker',
 
   props: {
     cancelButtonText: {

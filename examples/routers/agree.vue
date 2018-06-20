@@ -3,9 +3,9 @@
 
 <template>
   <div class="demo-page-wrap">
-    <sq-agree v-model="isAgree">同意并阅读<a @click.stop="click">《保险须知》</a>中的条例</sq-agree>
+    <sq-agree v-model="isAgree">我已阅读并接受<a @click.stop="click">《保险须知》</a>中的条例</sq-agree>
     <sq-agree v-model="isAgree">
-      同意并阅读<a @click.stop="click">《客户告知书》《保单条款》《产品详情》</a>中的条例
+      我已阅读并接受<a @click.stop="click">《客户告知书》《保单条款》《产品详情》</a>中的条例
     </sq-agree>
     <p>
       {{ isAgree }}

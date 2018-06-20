@@ -1,177 +1,6 @@
 <style lang="scss">
 $theme-color: #4a90e2;
 
-// // 内容从下往上动画
-// @keyframes ry-slide-bottom-enter {
-//   from {
-//     transform: translate3d(0, 100%, 0);
-//   }
-// }
-
-// @keyframes ry-slide-bottom-leave {
-//   to {
-//     transform: translate3d(0, 100%, 0);
-//   }
-// }
-// .ry-slide-bottom {
-//   &-enter-active {
-//     animation: ry-slide-bottom-enter .3s both ease;
-//   }
-
-//   &-leave-active {
-//     animation: ry-slide-bottom-leave .3s both ease;
-//   }
-// }
-// // 蒙层渐变动画
-// @keyframes ry-fade-enter {
-//   from {
-//     opacity: 0;
-//   }
-// }
-
-// @keyframes ry-fade-leave {
-//   to {
-//     opacity: 0;
-//   }
-// }
-// .ry-fade {
-//   &-enter-active {
-//     animation: ry-fade-enter .3s both ease;
-//   }
-
-//   &-leave-active {
-//     animation: ry-fade-leave .3s both ease;
-//   }
-// }
-
-.top-line {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px solid #E5E5E5;
-    color: #E5E5E5;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-  }
-}
-.bottom-line {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px solid #E5E5E5;
-    color: #E5E5E5;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-  }
-}
-
-// .mask {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   background-color: rgba(0, 0, 0, .5);
-//   z-index: 1000;
-// }
-// .content {
-//   z-index: 1001;
-//   position: fixed;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   text-align: center;
-//   background-color: #fff;
-.sq-picker {
-  text-align: center;
-  background-color: #fff;
-}
-.sq-picker__header {
-  display: flex;
-  min-height: 50px;
-  line-height: 50px;
-  :nth-child(1) {
-    width: 80px;
-    flex: 0 0 80px;
-    color: $theme-color;
-    font-size: 16px;
-  }
-  :nth-child(2) {
-    flex: 1;
-  }
-  :nth-child(3) {
-    width: 80px;
-    flex: 0 0 80px;
-    color: $theme-color;
-    font-size: 16px;
-  }
-}
-.sq-picker__body {
-  height: 240px;
-  line-height: 48px;
-  position: relative;
-  display: flex;
-  overflow: hidden;
-  .wrapper {
-    flex: 1;
-    position: relative;
-    height: 100%;
-    .item-mask {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
-        linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
-      background-position: top, bottom;
-      background-size: 100% 96px;
-      background-repeat: no-repeat;
-      z-index: 1004;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .line {
-      width: 100%;
-      height: 48px;
-      position: absolute;
-      left: 0;
-      top: 96px;
-      z-index: 1003;
-    }
-    .content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1001;
-      .item {
-        height: 48px;
-        &.bottom-line {
-          &:last-child::after {
-            border: 0;
-          }
-        }
-      }
-    }
-  }
-}
-// }
 @keyframes quan {
   from {
     transform: rotate(0deg);
@@ -180,42 +9,150 @@ $theme-color: #4a90e2;
     transform: rotate(360deg);
   }
 }
-
-.loading-icon {
-  box-sizing: border-box;
-  width: 36px;
-  height: 36px;
-  border: 3px solid transparent;
-  border-top-color: $theme-color;
-  border-left-color: $theme-color;
-  border-bottom-color: $theme-color;
-  border-radius: 50%;
-  animation: quan .8s infinite linear
+.sq-picker {
+  text-align: center;
+  background-color: #fff;
+  &-header {
+    display: flex;
+    min-height: 50px;
+    line-height: 50px;
+    :nth-child(1) {
+      width: 80px;
+      flex: 0 0 80px;
+      color: $theme-color;
+      font-size: 16px;
+    }
+    :nth-child(2) {
+      flex: 1;
+    }
+    :nth-child(3) {
+      width: 80px;
+      flex: 0 0 80px;
+      color: $theme-color;
+      font-size: 16px;
+    }
+  }
+  &-body {
+    height: 240px;
+    line-height: 48px;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    &-wrapper {
+      flex: 1;
+      position: relative;
+      height: 100%;
+      .sq-picker-loading-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
+          linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+        background-position: top, bottom;
+        background-size: 100% 96px;
+        background-repeat: no-repeat;
+        z-index: 1004;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .sq-picker-active-line {
+        width: 100%;
+        height: 48px;
+        position: absolute;
+        left: 0;
+        top: 96px;
+        z-index: 1003;
+      }
+      &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1001;
+        &-item {
+          height: 48px;
+          &.sq-picker-bottom-line {
+            &:last-child::after {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-top-line {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #E5E5E5;
+      color: #E5E5E5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  &-bottom-line {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #E5E5E5;
+      color: #E5E5E5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  &-loading-icon {
+    box-sizing: border-box;
+    width: 36px;
+    height: 36px;
+    border: 3px solid transparent;
+    border-top-color: $theme-color;
+    border-left-color: $theme-color;
+    border-bottom-color: $theme-color;
+    border-radius: 50%;
+    animation: quan .8s infinite linear
+  }
 }
 </style>
 
 <template>
   <div class="sq-picker">
-    <div class="sq-picker__header bottom-line" v-show="showToolbar">
+    <div class="sq-picker-header sq-picker-bottom-line" v-show="showToolbar">
       <div @click="$_cancel">{{ cancelButtonText }}</div>
       <div>{{ title }}</div>
       <div @click="$_confirm">{{ confirmButtonText }}</div>
     </div>
-    <div class="sq-picker__body">
-      <div class="wrapper" ref="wrapper">
+    <div class="sq-picker-body">
+      <div class="sq-picker-body-wrapper" ref="wrapper">
         <div
-          class="content"
+          class="sq-picker-body-content"
           :style="{
             transform: `translate3d(0px, ${translateY}px, 0px)`,
             transition: `transform ${transitionTime}s`
           }"
         >
-          <div class="item" v-for="(item, index) in list" :key="index">{{ item }}</div>
+          <div class="sq-picker-body-item" v-for="(item, index) in list" :key="index">{{ item }}</div>
         </div>
-        <div class="item-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
-          <div class="mask-loading loading-icon" v-show="loading"></div>
+        <div class="sq-picker-loading-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
+          <div class="sq-picker-loading-icon" v-show="loading"></div>
         </div>
-        <div class="line top-line bottom-line"></div>
+        <div class="sq-picker-active-line sq-picker-top-line sq-picker-bottom-line"></div>
       </div>
     </div>
   </div>
