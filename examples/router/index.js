@@ -4,6 +4,9 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  },
   routes: [
     { path: '/icon', meta: { name: '图标' }, component: () => import('../routers/icon.vue') },
     { path: '/accordion', meta: { name: '折叠面板' }, component: () => import('../routers/accordion.vue') },

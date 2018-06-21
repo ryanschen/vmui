@@ -27,6 +27,8 @@ import SqCitySelector from '@/components/citySelector'
 import SqLoadmore from '@/components/loadmore'
 import SqDatepicker from '@/components/datepicker'
 import SqSwitch from '@/components/switch'
+import SqAccordion from '@/components/accordion'
+import SqAccordionItem from '@/components/accordionItem'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
@@ -55,7 +57,9 @@ const components = [
   SqCitySelector,
   SqLoadmore,
   SqDatepicker,
-  SqSwitch
+  SqSwitch,
+  SqAccordion,
+  SqAccordionItem
 ]
 
 components.forEach(component => {
