@@ -1,8 +1,10 @@
 <template>
-  <span @click="change" class="sq-radio-wrap">
-    <span class="sq-radio__wrap" :class="[name === currentValue ? 'sq-radio__checked' : '']"></span>
-    <span>
-      <slot></slot>
+  <span class="sq-radio">
+    <span @click="$_change" class="sq-radio-wrap">
+      <span class="sq-radio-radioicon" :class="radioiconClasses"></span>
+      <span class="sq-radio-text">
+        <slot></slot>
+      </span>
     </span>
   </span>
 </template>
@@ -21,6 +23,16 @@ export default {
     }
   },
 
+  computed: {
+    radioiconClasses () {
+      return [
+        {
+          'sq-radio-radioicon-checked': this.name === this.currentValue
+        }
+      ]
+    }
+  },
+
   data () {
     return {
       currentValue: ''
@@ -28,7 +40,7 @@ export default {
   },
 
   methods: {
-    change () {
+    $_change () {
       this.$parent.update(this.name)
     }
   },
@@ -41,46 +53,43 @@ export default {
 </script>
 <style lang='scss'>
 $theme-color: #0097DF;
-
-.sq-radio-wrap {
-  display: inline-flex;
-}
-
-.sq-radio__wrap {
-  padding-right: 24px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &::before {
-    content: '';
-    display: block;
-    width: 18px;
-    height: 18px;
-    background-color: #D8D8D8;
-    position: absolute;
-    left: 0;
+.sq-radio {
+  display: inline-block;
+  &-wrap {
+    display: flex;
+    align-items: baseline;
+  }
+  &-radioicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1em;
+    height: 1.1em;
     border-radius: 50%;
+    background: #ccc;
+    transform: translateY(-2px);
+    &-checked {
+      background-color: $theme-color;
+      &.sq-radio-radioicon {
+        &::before {
+          transform: rotate(45deg) scale(1) translateY(-1px) translateX(-1px);
+        }
+      }
+    }
+    &::before {
+      content: '';
+      width: .25em;
+      height: .5em;
+      border: 2px solid #fff;
+      border-top: 0;
+      border-left: 0;
+      transition: transform .2s ease-in-out;
+      transform: rotate(45deg) scale(0) translateY(-1px) translateX(-1px);
+    }
   }
-  &::after {
-    content: '';
-    display: table;
-    width: 4px;
-    height: 8px;
-    position: absolute;
-    top: 5px;
-    left: 6px;
-    border: 2px solid #fff;
-    border-top: 0;
-    border-left: 0;
-    transform: rotate(45deg) scale(0);
-    transition: all .2s ease-in-out;
+  &-text {
+    display: inline-block;
+    margin-left: 6px;
   }
-}
-.sq-radio__checked.sq-radio__wrap::before {
-  background-color: $theme-color;
-}
-.sq-radio__checked.sq-radio__wrap::after {
-  transform: rotate(45deg) scale(1);
 }
 </style>

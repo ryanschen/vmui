@@ -39,13 +39,12 @@ export default {
 
 </script>
 <style lang="scss">
-// $theme-color: #0097DF;
-$theme-color: #0083FF;
+$theme-color: #0097DF;
 
 .sq-agree {
   display: inline-block;
   a {
-    color: #0C6AFE;
+    color: $theme-color;
   }
   &-wrap {
     display: flex;
@@ -64,7 +63,7 @@ $theme-color: #0083FF;
       background-color: $theme-color;
       &.sq-agree-checkicon {
         &::before {
-          transform: rotate(45deg) scale(1);
+          transform: rotate(45deg) scale(1) translateY(-1px) translateX(-1px);
         }
       }
     }
@@ -76,7 +75,7 @@ $theme-color: #0083FF;
       border-top: 0;
       border-left: 0;
       transition: transform .2s ease-in-out;
-      transform: rotate(45deg) scale(0);
+      transform: rotate(45deg) scale(0) translateY(-1px) translateX(-1px);
     }
   }
   &-text {
