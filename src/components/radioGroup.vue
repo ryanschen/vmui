@@ -17,7 +17,7 @@ export default {
 
   methods: {
     getChildrens () {
-      return this.$children.filter(item => item.$options.name === 'sq-radio-item')
+      return this.$children.filter(item => item.$options.name === 'sq-radio')
     },
 
     update (currentValue) {

@@ -1,8 +1,8 @@
 <template>
-  <div class="sq-cellgroup-wrap">
-    <div class="sq-cellgroup" v-if="title !== void 0 && title !== null || label !== void 0 && label !== null">
-      <div class="sq-cellgroup-left">{{ title }}</div>
-      <div class="sq-cellgroup-right" @click="$_click">{{ label }}</div>
+  <div class="sq-cell-group">
+    <div class="sq-cell-group-wrap" v-if="title !== void 0 && title !== null || label !== void 0 && label !== null">
+      <div class="sq-cell-group-wrap-left">{{ title }}</div>
+      <div class="sq-cell-group-wrap-right" @click="$_click">{{ label }}</div>
     </div>
     <slot></slot>
   </div>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'sq-cellgroup',
+  name: 'sq-cell-group',
 
   props: {
     title: {
@@ -32,7 +32,7 @@ export default {
 <style lang="scss">
 @import '../assets/style/components/var.scss';
 
-.sq-cellgroup {
+.sq-cell-group-wrap {
   height: 44px;
   font-size: 13px;
   padding: 12px 15px;
@@ -40,10 +40,10 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .sq-cellgroup-left {
+  &-left {
     color: #666;
   }
-  .sq-cellgroup-right {
+  &-right {
     color: $theme-color;
   }
 }

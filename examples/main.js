@@ -12,9 +12,9 @@ import SqTabpane from '@/components/tabpane'
 import SqTabs from '@/components/tabs'
 import SqField from '@/components/field'
 import SqCell from '@/components/cell'
-import SqCellgroup from '@/components/cellgroup'
+import SqCellGroup from '@/components/cellGroup'
 import SqFieldgroup from '@/components/fieldGroup'
-import SqRadioItem from '@/components/radioItem'
+import SqRadio from '@/components/radio'
 import SqRadioGroup from '@/components/radioGroup'
 import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
@@ -29,6 +29,7 @@ import SqDatepicker from '@/components/datepicker'
 import SqSwitch from '@/components/switch'
 import SqAccordion from '@/components/accordion'
 import SqAccordionItem from '@/components/accordionItem'
+import SqStepper from '@/components/stepper'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
@@ -43,10 +44,10 @@ const components = [
   SqTabs,
   SqField,
   SqCell,
-  SqCellgroup,
+  SqCellGroup,
   SqFieldgroup,
   SqRadioGroup,
-  SqRadioItem,
+  SqRadio,
   SqActionsheet,
   SqAgree,
   SqPicker,
@@ -59,7 +60,8 @@ const components = [
   SqDatepicker,
   SqSwitch,
   SqAccordion,
-  SqAccordionItem
+  SqAccordionItem,
+  SqStepper
 ]
 
 components.forEach(component => {

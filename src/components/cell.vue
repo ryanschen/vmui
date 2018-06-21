@@ -1,5 +1,5 @@
 <template>
-  <div class="sq-cell-wrap" :class="classes">
+  <div class="sq-cell" :class="classes">
     <div
       class="sq-cell-head"
       v-if="title !== void 0 && title !== null || $slots.title"
@@ -44,7 +44,7 @@ export default {
     classes () {
       return [
         {
-          'sq-cell__islink': this.isLink
+          'sq-cell-islink': this.isLink
         }
       ]
     }
@@ -66,7 +66,7 @@ export default {
 <style lang="scss">
 @import '../assets/style/mixins.scss';
 
-.sq-cell-wrap {
+.sq-cell {
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -74,33 +74,33 @@ export default {
   line-height: 48px;
   background-color: #fff;
   padding: 13px 16px;
-  &~.sq-cell-wrap {
+  &~& {
     @include mix-1px($top: 1);
   }
-  .sq-cell-bd {
+  &-bd {
     flex: 1;
     text-align: right;
   }
-  .sq-cell-ft {
+  &-ft {
     padding-left: 10px;
   }
-}
-// arrow
-.sq-cell__islink {
-  position: relative;
-}
-.sq-cell__islink::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 10px;
-  right: 14px;
-  top: 50%;
-  margin-top: -5px;
-  height: 10px;
-  border-right: 2px solid #e6e6e6;
-  border-top: 2px solid #e6e6e6;
-  box-sizing: border-box;
-  transform: rotate(45deg);
+  // arrow
+  &-islink {
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10px;
+      right: 14px;
+      top: 50%;
+      margin-top: -5px;
+      height: 10px;
+      border-right: 2px solid #e6e6e6;
+      border-top: 2px solid #e6e6e6;
+      box-sizing: border-box;
+      transform: rotate(45deg);
+    }
+  }
 }
 </style>

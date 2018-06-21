@@ -28,6 +28,7 @@ export default {
         { to: 'loadmore', name: 'Loadmore - 加载更多' },
         { to: 'noticeBar', name: 'NoticeBar - 通告栏' },
         { to: 'popup', name: 'Popup - 弹出层' },
+        { to: 'stepper', name: 'Stepper - 步进器' },
         { to: 'swiper', name: 'Swiper - 轮播' },
         { to: 'tabs', name: 'Tabs - 标签页' }
       ],
