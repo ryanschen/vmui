@@ -14,8 +14,8 @@ import SqField from '@/components/field'
 import SqCell from '@/components/cell'
 import SqCellgroup from '@/components/cellgroup'
 import SqFieldgroup from '@/components/fieldGroup'
-import SqRadio from '@/components/radio'
-import SqRadiogroup from '@/components/radioGroup'
+import SqRadioItem from '@/components/radioItem'
+import SqRadioGroup from '@/components/radioGroup'
 import SqActionsheet from '@/components/actionsheet'
 import SqAgree from '@/components/agree'
 import SqPicker from '@/components/picker'
@@ -45,8 +45,8 @@ const components = [
   SqCell,
   SqCellgroup,
   SqFieldgroup,
-  SqRadiogroup,
-  SqRadio,
+  SqRadioGroup,
+  SqRadioItem,
   SqActionsheet,
   SqAgree,
   SqPicker,

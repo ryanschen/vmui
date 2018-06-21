@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="sq-radio-group">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'sq-radiogroup',
+  name: 'sq-radio-group',
 
   props: {
     value: {
@@ -17,7 +17,7 @@ export default {
 
   methods: {
     getChildrens () {
-      return this.$children.filter(item => item.$options.name === 'sq-radio')
+      return this.$children.filter(item => item.$options.name === 'sq-radio-item')
     },
 
     update (currentValue) {
@@ -49,5 +49,5 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss">
 </style>

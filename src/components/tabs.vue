@@ -101,7 +101,7 @@ export default {
 
 }
 </script>
-<style lang='scss'>
+<style lang="scss">
 $theme-color: #4A8FE2;
 
 .sq-tab-active {

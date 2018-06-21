@@ -1,13 +1,13 @@
 <template>
   <div class="demo-page-wrap">
-    <sq-radiogroup
+    <sq-radio-group
       v-model="radioValue"
       @change="change"
     >
-      <sq-radio name="pg">苹果</sq-radio>
-      <sq-radio name="xj">香蕉</sq-radio>
-      <sq-radio name="hmg">哈密瓜</sq-radio>
-    </sq-radiogroup>
+      <sq-radio-item name="pg">苹果</sq-radio-item>
+      <sq-radio-item name="xj">香蕉</sq-radio-item>
+      <sq-radio-item name="hmg">哈密瓜</sq-radio-item>
+    </sq-radio-group>
     <p>{{ radioValue }}</p>
     <p>
       <sq-button type="primary" @click="radioValue = 'pg'">苹果</sq-button>

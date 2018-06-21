@@ -39,7 +39,7 @@ export default {
 
 </script>
 <style lang="scss">
-$theme-color: #0097DF;
+@import '../assets/style/components/var.scss';
 
 .sq-agree {
   display: inline-block;

@@ -1,12 +1,12 @@
 <template>
   <div>
-    swiperItem
+    strpper
   </div>
 </template>
 
 <script>
 export default {
-  name: 'sq-swiper-item',
+  name: 'sq-stepper',
 
   data () {
     return {

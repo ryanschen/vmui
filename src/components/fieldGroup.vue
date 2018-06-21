@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .sq-field-group {
   padding: 16px;
   .sq-field {

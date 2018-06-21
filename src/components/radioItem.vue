@@ -1,8 +1,8 @@
 <template>
-  <span class="sq-radio">
-    <span @click="$_change" class="sq-radio-wrap">
-      <span class="sq-radio-radioicon" :class="radioiconClasses"></span>
-      <span class="sq-radio-text">
+  <span class="sq-radio-item">
+    <span @click="$_change" class="sq-radio-item-wrap">
+      <span class="sq-radio-item-radioicon" :class="radioiconClasses"></span>
+      <span class="sq-radio-item-text">
         <slot></slot>
       </span>
     </span>
@@ -14,7 +14,7 @@ export default {
   /**
    * name在radioGroup组件逻辑引用，若修改name值，则radioGroup中需相应修改
    */
-  name: 'sq-radio',
+  name: 'sq-radio-item',
 
   props: {
     name: {
@@ -27,7 +27,7 @@ export default {
     radioiconClasses () {
       return [
         {
-          'sq-radio-radioicon-checked': this.name === this.currentValue
+          'sq-radio-item-radioicon-checked': this.name === this.currentValue
         }
       ]
     }
@@ -51,9 +51,10 @@ export default {
 }
 
 </script>
-<style lang='scss'>
-$theme-color: #0097DF;
-.sq-radio {
+<style lang="scss">
+@import '../assets/style/components/var.scss';
+
+.sq-radio-item {
   display: inline-block;
   &-wrap {
     display: flex;
@@ -70,7 +71,7 @@ $theme-color: #0097DF;
     transform: translateY(-2px);
     &-checked {
       background-color: $theme-color;
-      &.sq-radio-radioicon {
+      &.sq-radio-item-radioicon {
         &::before {
           transform: rotate(45deg) scale(1) translateY(-1px) translateX(-1px);
         }

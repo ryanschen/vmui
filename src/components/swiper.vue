@@ -1,4 +1,4 @@
-<style lang="scss" scoped>
+<style lang="scss">
 .swiper-wrap {
   overflow: hidden;
   position: relative;
