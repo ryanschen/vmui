@@ -8,7 +8,7 @@ import SqDemo from '@/components/demo'
 
 import SqCarlicense from '@/components/carlicense'
 import SqButton from '@/components/button'
-import SqPane from '@/components/pane'
+import SqTabpane from '@/components/tabpane'
 import SqTabs from '@/components/tabs'
 import SqField from '@/components/field'
 import SqCell from '@/components/cell'
@@ -39,7 +39,7 @@ const components = [
   SqDemo,
   SqCarlicense,
   SqButton,
-  SqPane,
+  SqTabpane,
   SqTabs,
   SqField,
   SqCell,
