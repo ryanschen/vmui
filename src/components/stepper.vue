@@ -10,7 +10,8 @@
         class="sq-stepper-input"
         v-model.number="currentVal"
         :readonly="readonlyInput"
-        :disabled="disabledInput"
+        :disabled="isInputDisabled"
+        @input="$_onInput"
       >
       <span class="sq-stepper-right" :class="addClasses" @click="$_add">
         <i class="iconfont icon-jia"></i>
@@ -48,14 +49,14 @@ export default {
     cutClasses () {
       return [
         {
-          'sq-stepper-cut-disabled': this.disabledCut
+          'sq-stepper-cut-disabled': this.isCutDisabled
         }
       ]
     },
     addClasses () {
       return [
         {
-          'sq-stepper-add-disabled': this.disabledAdd
+          'sq-stepper-add-disabled': this.isAddDisabled
         }
       ]
     }
@@ -64,53 +65,82 @@ export default {
   data () {
     return {
       currentVal: this.value,
-      disabledInput: false,
-      disabledCut: false,
-      disabledAdd: false
+      isInputDisabled: false,
+      isCutDisabled: false,
+      isAddDisabled: false
     }
   },
 
   methods: {
     $_cut () {
-      if (this.disabledCut) return
+      if (this.isCutDisabled) return
 
-      this.currentVal -= +this.step
-      // if ((this.currentVal - +this.step) <= this.min) {
-      // }
+      const result = this.currentVal - +this.step
+      this.currentVal = result
+      this.$emit('input', result)
+
+      if (this.min !== void 0 && (result - +this.step < +this.min)) {
+        this.isCutDisabled = true
+      }
+      if (this.isAddDisabled && this.max !== void 0 && result < +this.max) {
+        this.isAddDisabled = false
+      }
     },
     $_add () {
-      if (this.disabledAdd) return
+      if (this.isAddDisabled) return
 
-      this.currentVal += +this.step
-      // if ((this.currentVal + +this.step) >= this.max) {
-      // }
+      const result = this.currentVal + +this.step
+      this.currentVal = result
+      this.$emit('input', result)
+
+      if (this.max !== void 0 && (result + +this.step > +this.max)) {
+        this.isAddDisabled = true
+      }
+      if (this.isCutDisabled && this.min !== void 0 && result > +this.min) {
+        this.isCutDisabled = false
+      }
+    },
+    $_onInput (event) {
+      const val = +event.target.value
+      console.log(val)
+      if (this.min !== void 0) {
+        if (val <= +this.min) {
+          this.currentVal = +this.min
+          this.$emit('input', +this.min)
+          this.isCutDisabled = true
+          return
+        }
+      }
+
+      if (this.max !== void 0) {
+        if (val >= +this.max) {
+          this.currentVal = +this.max
+          this.$emit('input', +this.max)
+          this.isAddDisabled = true
+          return
+        }
+      }
+
+      this.currentVal = val
+      this.$emit('input', val)
+      this.isAddDisabled && (this.isAddDisabled = false)
+      this.isCutDisabled && (this.isCutDisabled = false)
     }
   },
 
   watch: {
-    currentVal (val, oldVal) {
-      console.log(this.disabledAdd)
-      console.log(this.max !== void 0 && val >= this.max)
-      if (this.max !== void 0 && val >= this.max) {
-        this.currentVal = +oldVal
-        this.$emit('input', +oldVal)
-        this.disabledAdd = true
-        return
-      }
-      if (this.min !== void 0 && val <= this.min) {
-        this.currentVal = +oldVal
-        this.$emit('input', +oldVal)
-        this.disabledCut = true
-        return
-      }
-      console.log(345)
-      if (val < this.max && this.disabledAdd) {
-        this.disabledAdd = false
-      }
-      if (val > this.min && this.disabledCut) {
-        this.disabledCut = false
-      }
-      this.$emit('input', this.currentVal)
+    currentVal: {
+      handler (val, oldVal) {
+        if (oldVal === void 0 && val !== void 0) {
+          if (this.max !== void 0 && +val >= +this.max) {
+            this.isAddDisabled = true
+          }
+          if (this.min !== void 0 && +val <= +this.min) {
+            this.isCutDisabled = true
+          }
+        }
+      },
+      immediate: true
     }
   }
 }
