@@ -1,11 +1,11 @@
 <template>
-  <div class="picker">
+  <div class="sq-popup">
     <transition name="ry-fade">
-      <div class="mask" v-show="value" @click="$_cancel"></div>
+      <div class="sq-popup-mask" v-show="value" @click="$_cancel"></div>
     </transition>
     <transition :name="transitionSlideType">
       <div
-        class="content"
+        class="sq-popup-content"
         v-show="value"
         :class="positionClass"
       >
@@ -44,7 +44,7 @@ export default {
 
   computed: {
     positionClass () {
-      return [ `popup-${this.position}` ]
+      return [ `sq-popup-${this.position}` ]
     },
     transitionSlideType () {
       return objTransitionSlideType[this.position]
@@ -168,172 +168,47 @@ $theme-color: #4a90e2;
   }
 }
 
-.top-line {
-  position: relative;
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
+.sq-popup {
+  &-mask {
+    position: fixed;
     top: 0;
-    right: 0;
-    height: 1px;
-    border-bottom: 1px solid #E5E5E5;
-    color: #E5E5E5;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
-  }
-}
-.bottom-line {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
     left: 0;
-    bottom: 0;
     right: 0;
-    height: 1px;
-    border-bottom: 1px solid #E5E5E5;
-    color: #E5E5E5;
-    -webkit-transform-origin: 0 100%;
-    transform-origin: 0 100%;
-    -webkit-transform: scaleY(0.5);
-    transform: scaleY(0.5);
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    z-index: 1010;
   }
-}
-
-.mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, .5);
-  z-index: 1010;
-}
-.content.popup-top {
-  left: 0;
-  right: 0;
-  top: 0;
-}
-.content.popup-bottom {
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-.content.popup-left {
-  top: 0;
-  left: 0;
-  width: 60%;
-  bottom: 0;
-}
-.content.popup-right {
-  top: 0;
-  right: 0;
-  width: 60%;
-  bottom: 0;
-}
-.content.popup-default {
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-}
-.content {
-  z-index: 1011;
-  position: fixed;
-  background-color: #fff;
-  .header {
-    display: flex;
-    min-height: 50px;
-    line-height: 50px;
-    :nth-child(1) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
-    :nth-child(2) {
-      flex: 1;
-    }
-    :nth-child(3) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
-  }
-  .body {
-    height: 240px;
-    line-height: 48px;
-    position: relative;
-    display: flex;
+  &-content {
+    position: fixed;
     background-color: #fff;
-    overflow: hidden;
-    .wrapper {
-      flex: 1;
-      position: relative;
-      height: 100%;
-      .item-mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
-          linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
-        background-position: top, bottom;
-        background-size: 100% 96px;
-        background-repeat: no-repeat;
-        z-index: 1014;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .line {
-        width: 100%;
-        height: 48px;
-        position: absolute;
-        left: 0;
-        top: 96px;
-        z-index: 1013;
-      }
-      .content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1011;
-        .item {
-          height: 48px;
-          &.bottom-line {
-            &:last-child::after {
-              border: 0;
-            }
-          }
-        }
-      }
+    z-index: 1011;
+    &.sq-popup-top {
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+    &.sq-popup-bottom {
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    &.sq-popup-left {
+      top: 0;
+      left: 0;
+      width: 60%;
+      bottom: 0;
+    }
+    &.sq-popup-right {
+      top: 0;
+      right: 0;
+      width: 60%;
+      bottom: 0;
+    }
+    &.sq-popup-default {
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
     }
   }
-}
-@keyframes quan {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.loading-icon {
-  box-sizing: border-box;
-  width: 36px;
-  height: 36px;
-  border: 3px solid transparent;
-  border-top-color: $theme-color;
-  border-left-color: $theme-color;
-  border-bottom-color: $theme-color;
-  border-radius: 50%;
-  animation: quan .8s infinite linear
 }
 </style>

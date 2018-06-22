@@ -1,136 +1,3 @@
-<style lang="scss">
-$theme-color: #4a90e2;
-
-@keyframes quan {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.sq-picker {
-  text-align: center;
-  background-color: #fff;
-  &-header {
-    display: flex;
-    min-height: 50px;
-    line-height: 50px;
-    :nth-child(1) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
-    :nth-child(2) {
-      flex: 1;
-    }
-    :nth-child(3) {
-      width: 80px;
-      flex: 0 0 80px;
-      color: $theme-color;
-      font-size: 16px;
-    }
-  }
-  &-body {
-    height: 240px;
-    line-height: 48px;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    &-wrapper {
-      flex: 1;
-      position: relative;
-      height: 100%;
-      .sq-picker-loading-mask {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
-          linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
-        background-position: top, bottom;
-        background-size: 100% 96px;
-        background-repeat: no-repeat;
-        z-index: 1004;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .sq-picker-active-line {
-        width: 100%;
-        height: 48px;
-        position: absolute;
-        left: 0;
-        top: 96px;
-        z-index: 1003;
-      }
-      &-content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1001;
-        &-item {
-          height: 48px;
-          &.sq-picker-bottom-line {
-            &:last-child::after {
-              border: 0;
-            }
-          }
-        }
-      }
-    }
-  }
-  &-top-line {
-    position: relative;
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      height: 1px;
-      border-bottom: 1px solid #E5E5E5;
-      color: #E5E5E5;
-      -webkit-transform-origin: 0 100%;
-      transform-origin: 0 100%;
-      -webkit-transform: scaleY(0.5);
-      transform: scaleY(0.5);
-    }
-  }
-  &-bottom-line {
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      height: 1px;
-      border-bottom: 1px solid #E5E5E5;
-      color: #E5E5E5;
-      -webkit-transform-origin: 0 100%;
-      transform-origin: 0 100%;
-      -webkit-transform: scaleY(0.5);
-      transform: scaleY(0.5);
-    }
-  }
-  &-loading-icon {
-    box-sizing: border-box;
-    width: 36px;
-    height: 36px;
-    border: 3px solid transparent;
-    border-top-color: $theme-color;
-    border-left-color: $theme-color;
-    border-bottom-color: $theme-color;
-    border-radius: 50%;
-    animation: quan .8s infinite linear
-  }
-}
-</style>
-
 <template>
   <div class="sq-picker">
     <div class="sq-picker-header sq-picker-bottom-line" v-show="showToolbar">
@@ -140,19 +7,13 @@ $theme-color: #4a90e2;
     </div>
     <div class="sq-picker-body">
       <div class="sq-picker-body-wrapper" ref="wrapper">
-        <div
-          class="sq-picker-body-content"
-          :style="{
-            transform: `translate3d(0px, ${translateY}px, 0px)`,
-            transition: `transform ${transitionTime}s`
-          }"
-        >
+        <div class="sq-picker-body-content" :style="{ transform: `translate3d(0px, ${translateY}px, 0px)`, transition: `transform ${transitionTime}s` }">
           <div class="sq-picker-body-item" v-for="(item, index) in list" :key="index">{{ item }}</div>
         </div>
         <div class="sq-picker-loading-mask" :style="{'backgroundColor': loading ? 'rgba(255,255,255,1)' : ''}">
           <div class="sq-picker-loading-icon" v-show="loading"></div>
         </div>
-        <div class="sq-picker-active-line sq-picker-top-line sq-picker-bottom-line"></div>
+        <div class="sq-picker-active-line sq-picker-top-line sq-picker-bottom-line" v-show="!loading"></div>
       </div>
     </div>
   </div>
@@ -353,3 +214,133 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+$theme-color: #4a90e2;
+
+@keyframes quan {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sq-picker {
+  text-align: center;
+  background-color: #fff;
+  &-header {
+    display: flex;
+    min-height: 50px;
+    line-height: 50px;
+    :nth-child(1) {
+      width: 80px;
+      flex: 0 0 80px;
+      color: $theme-color;
+      font-size: 16px;
+    }
+    :nth-child(2) {
+      flex: 1;
+    }
+    :nth-child(3) {
+      width: 80px;
+      flex: 0 0 80px;
+      color: $theme-color;
+      font-size: 16px;
+    }
+  }
+  &-body {
+    height: 240px;
+    line-height: 48px;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    &-wrapper {
+      flex: 1;
+      position: relative;
+      height: 100%;
+      .sq-picker-loading-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6)),
+          linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.6));
+        background-position: top, bottom;
+        background-size: 100% 96px;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .sq-picker-active-line {
+        width: 100%;
+        height: 48px;
+        position: absolute;
+        left: 0;
+        top: 96px;
+      }
+      &-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        &-item {
+          height: 48px;
+          &.sq-picker-bottom-line {
+            &:last-child::after {
+              border: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  &-top-line {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #E5E5E5;
+      color: #E5E5E5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  &-bottom-line {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      height: 1px;
+      border-bottom: 1px solid #E5E5E5;
+      color: #E5E5E5;
+      -webkit-transform-origin: 0 100%;
+      transform-origin: 0 100%;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+  &-loading-icon {
+    box-sizing: border-box;
+    width: 36px;
+    height: 36px;
+    border: 3px solid transparent;
+    border-top-color: $theme-color;
+    border-left-color: $theme-color;
+    border-bottom-color: $theme-color;
+    border-radius: 50%;
+    animation: quan .8s infinite linear
+  }
+}
+</style>

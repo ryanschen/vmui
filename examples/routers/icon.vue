@@ -20,16 +20,16 @@ export default {
           { name: 'circle-left' },
           { name: 'circle-down' },
           { name: 'circle-right' },
-          { name: 'gantanhao-empty' }
+          { name: 'alert-empty' }
         ],
         [
-          { name: 'gantanhao-full' },
-          { name: 'gantanhao' },
-          { name: 'duihao-full' },
+          { name: 'alert-full' },
+          { name: 'alert' },
+          { name: 'checkmark-full' },
           { name: 'checkmark' }
         ],
         [
-          { name: 'cuohao-full' },
+          { name: 'error-full' },
           { name: 'error' },
           { name: 'loading' },
           { name: 'arrow-left' }
