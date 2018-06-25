@@ -21,7 +21,7 @@ const objTransitionSlideType = {
   left: 'ry-slide-left',
   top: 'ry-slide-top',
   right: 'ry-slide-right',
-  default: 'ry-fade'
+  center: 'ry-fade'
 }
 
 export default {
@@ -30,7 +30,7 @@ export default {
   props: {
     position: {
       type: String,
-      default: 'default'
+      default: 'center'
     },
     value: {
       type: Boolean,
@@ -61,7 +61,6 @@ export default {
 </script>
 
 <style lang="scss">
-$theme-color: #4a90e2;
 // 内容从右往左动画
 @keyframes ry-slide-right-enter {
   from {
@@ -204,7 +203,7 @@ $theme-color: #4a90e2;
       width: 60%;
       bottom: 0;
     }
-    &.sq-popup-default {
+    &.sq-popup-center {
       top: 50%;
       left: 50%;
       transform: translate3d(-50%, -50%, 0);

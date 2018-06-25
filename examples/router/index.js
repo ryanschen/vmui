@@ -8,6 +8,7 @@ export default new Router({
     return { x: 0, y: 0 }
   },
   routes: [
+    { path: '/tag', meta: { name: '标记' }, component: () => import('../routers/tag.vue') },
     { path: '/stepper', meta: { name: '步进器' }, component: () => import('../routers/stepper.vue') },
     { path: '/icon', meta: { name: '图标' }, component: () => import('../routers/icon.vue') },
     { path: '/accordion', meta: { name: '折叠面板' }, component: () => import('../routers/accordion.vue') },

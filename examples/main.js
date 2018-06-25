@@ -30,6 +30,7 @@ import SqSwitch from '@/components/switch'
 import SqAccordion from '@/components/accordion'
 import SqAccordionItem from '@/components/accordionItem'
 import SqStepper from '@/components/stepper'
+import SqTag from '@/components/tag'
 
 import SqToast from '@/components/toast/index.js'
 import SqDialog from '@/components/dialog/index.js'
@@ -61,7 +62,8 @@ const components = [
   SqSwitch,
   SqAccordion,
   SqAccordionItem,
-  SqStepper
+  SqStepper,
+  SqTag
 ]
 
 components.forEach(component => {

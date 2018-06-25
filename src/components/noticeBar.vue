@@ -2,7 +2,7 @@
   <div class="sq-notice-bar" v-show="isShowNoticeBar">
     <div class="sq-notice-bar-icon">
       <slot name="left-icon">
-        <i class="iconfont icon-gantanhao-full"></i>
+        <i class="iconfont icon-alert-full"></i>
       </slot>
     </div>
     <div class="sq-notice-bar-content" ref="content">
@@ -33,7 +33,7 @@ export default {
     mode: {
       type: String,
       validator (value) {
-        return ['', 'close', 'link'].indexOf(value) !== -1
+        return ['close', 'link'].indexOf(value) !== -1
       }
     },
     text: {
