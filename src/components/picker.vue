@@ -14,20 +14,6 @@
         :value-key="valueKey"
         @on-change="$_onChange"
       />
-        <!-- v-for="(slot, index) in list"
-        :key="index"
-        :valueKey="valueKey"
-        :values="slot.values || []"
-        :text-align="slot.textAlign || 'center'"
-        :visible-item-count="visibleItemCount"
-        :class-name="slot.className"
-        :flex="slot.flex"
-        v-model="values[slot.valueIndex]"
-        :rotate-effect="rotateEffect"
-        :divider="slot.divider"
-        :content="slot.content"
-        :itemHeight="itemHeight"
-        :default-index="slot.defaultIndex" -->
     </div>
     <div class="sq-picker-loading-mask" v-show="loading">
       <div class="sq-picker-loading-icon"></div>
@@ -141,7 +127,7 @@ export default {
         }
       }
 
-      this.currentValue[listIndex] = this.valueKey ? item[this.valueKey] : item
+      this.currentValue[listIndex] = valueKey ? item[valueKey] : item
 
       this.$emit('on-change', {
         value: JSON.parse(JSON.stringify(this.currentValue)),
