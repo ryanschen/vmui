@@ -76,8 +76,6 @@ $theme-color:#4A90E2;
 
 .sq-field {
   display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
   box-sizing: border-box;
   width: 100%;
   height: 48px;
@@ -91,8 +89,6 @@ $theme-color:#4A90E2;
   padding-left: 16px;
   &__label {
     flex: 0 0 74px;
-    -webkit-flex: 0 0 74px;
-    -webkit-box-flex: 0 0 74px;
     width: 74px;
     box-sizing: border-box;
     span {
@@ -115,8 +111,6 @@ $theme-color:#4A90E2;
   }
   &__value {
     flex: 1;
-    -webkit-flex: 1;
-    -webkit-box-flex: 1;
     position: relative;
     .sq-field__control {
       outline: none;

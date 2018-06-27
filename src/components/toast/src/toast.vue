@@ -64,17 +64,14 @@ export default {
 <style lang="scss">
 @keyframes ani-load-loop {
   0% {
-      -webkit-transform: rotate(0);
       transform: rotate(0)
   }
 
   50% {
-      -webkit-transform: rotate(180deg);
       transform: rotate(180deg)
   }
 
   to {
-      -webkit-transform: rotate(1turn);
       transform: rotate(1turn)
   }
 }
@@ -134,7 +131,6 @@ export default {
   -webkit-flex-direction: column;
   flex-direction: column;
   box-sizing: border-box;
-  -webkit-transform: translate3d(-50%, -50%, 0);
   transform: translate3d(-50%, -50%, 0);
   background-color: rgba(0, 0, 0, .7);
   padding: 12px;

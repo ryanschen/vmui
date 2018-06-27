@@ -1,12 +1,12 @@
 <template>
-  <div class="action-wrap">
+  <div class="sq-actionsheet">
     <transition name="ry-fade">
-      <div class="action-mark" v-show="isShow" @click="$_cancel"></div>
+      <div class="sq-actionsheet-mark" v-show="isShow" @click="$_cancel"></div>
     </transition>
     <transition name="ry-slide-bottom">
-      <div class="action-content" v-show="isShow">
-        <div class="action-row" @click="$_clickItem(item)" v-for="(item, index) in actionList" :key="index">{{ item.name }}</div>
-        <div class="action-row" @click="$_cancel" v-show="showCancelButton">取消</div>
+      <div class="sq-actionsheet-content" v-show="isShow">
+        <div class="sq-actionsheet-row" @click="$_clickItem(item)" v-for="(item, index) in actionList" :key="index">{{ item.name }}</div>
+        <div class="sq-actionsheet-row" @click="$_cancel" v-show="showCancelButton">取消</div>
       </div>
     </transition>
   </div>
@@ -101,24 +101,26 @@ export default {
     animation: ry-fade-leave .3s both ease;
   }
 }
-.action-mark {
-  background-color: rgba(0, 0, 0, .5);
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-}
-.action-content {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1001;
-  text-align: center;
-  background-color: #EFEFF4;
-  .action-row {
+.sq-actionsheet {
+  &-mark {
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  &-content {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+    text-align: center;
+    background-color: #EFEFF4;
+  }
+  &-row {
     color: #333;
     background-color: #fff;
     font-size: 16px;

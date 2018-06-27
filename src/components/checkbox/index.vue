@@ -42,11 +42,6 @@ export default {
 </script>
 <style lang='scss'>
 .sq-checkbox-wrap {
-  // display: -webkit-box;
-  // display: -moz-box;
-  // display: -webkit-flex;
-  // display: -ms-flexbox;
-  // display: inline-box;
   display: inline-flex;
   vertical-align: middle;
   .sq-checkbox__checkbox {
@@ -57,15 +52,6 @@ export default {
       visibility: hidden;
     }
     &::before {
-      // content: '';
-      // display: block;
-      // width: 18px;
-      // height: 18px;
-      // background-color: #0097DF;
-      // position: absolute;
-      // left: 0;
-      // top: 2px;
-      // border-radius: 50%;
       content: '';
       display: inline-block;
       width: 18px;
@@ -78,18 +64,6 @@ export default {
       border-radius: 50%;
     }
     &::after {
-      // content: "";
-      // display: table;
-      // width: 4px;
-      // height: 8px;
-      // position: absolute;
-      // top: 5px;
-      // left: 6px;
-      // border: 2px solid #fff;
-      // border-top: 0;
-      // border-left: 0;
-      // transform: rotate(45deg) scale(0);
-      // transition: all .2s ease-in-out;
       content: "";
       display: inline-block;
       width: 4px;

@@ -50,11 +50,6 @@ export default {
     }
   },
 
-  data () {
-    return {
-    }
-  },
-
   methods: {
     $_click () {
       this.$emit('click')
