@@ -1,5 +1,5 @@
 <template>
-  <span class="sq-radio">
+  <span class="sq-radio" :class="radioClasses">
     <span @click="$_change" class="sq-radio-wrap">
       <span class="sq-radio-radioicon" :class="radioiconClasses"></span>
       <span class="sq-radio-text">
@@ -20,14 +20,32 @@ export default {
     name: {
       type: null,
       required: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
 
   computed: {
+    isGroupDisabled () {
+      return this.$parent.disabled
+    },
+    type () {
+      return this.$parent.type
+    },
+    radioClasses () {
+      return [
+        {
+          'sq-radio-disabled': this.disabled
+        }
+      ]
+    },
     radioiconClasses () {
       return [
         {
-          'sq-radio-checked': this.name === this.currentValue
+          'sq-radio-checked': this.name === this.currentValue,
+          'sq-radio-checked-disabled': this.isGroupDisabled || this.disabled
         }
       ]
     }
@@ -41,6 +59,7 @@ export default {
 
   methods: {
     $_change () {
+      if (this.disabled || this.isGroupDisabled) return
       this.$parent.update(this.name)
     }
   },
@@ -56,6 +75,9 @@ export default {
 
 .sq-radio {
   display: inline-block;
+  &.sq-radio-disabled {
+    color: #bbb;
+  }
   &-wrap {
     display: flex;
     align-items: baseline;
@@ -67,8 +89,10 @@ export default {
     width: 1.1em;
     height: 1.1em;
     border-radius: 50%;
-    background: #ccc;
+    background: #ffffff;
     transform: translateY(-2px);
+    border: 1px solid #ccc;
+    box-sizing: border-box;
     &::before {
       content: '';
       width: .25em;
@@ -82,6 +106,11 @@ export default {
   }
   &-checked {
     background-color: $theme-color;
+    border-color: $theme-color;
+    &.sq-radio-checked-disabled {
+      background-color: #ccc;
+      border-color: #ccc;
+    }
     &.sq-radio-radioicon {
       &::before {
         transform: rotate(45deg) scale(1) translateY(-1px) translateX(-1px);

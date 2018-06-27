@@ -1,23 +1,46 @@
 <template>
-  <div class="demo-page-wrap">
-    <sq-radio-group
-      v-model="radioValue"
-      @change="change"
-    >
+  <div class="">
+    <!-- demo-page-wrap -->
+    <p>
+      <sq-radio-group v-model="value1" @change="change">
+        <sq-radio name="pt">普通</sq-radio>
+      </sq-radio-group>
+    </p>
+    <p>
+      <sq-radio-group v-model="value2" @change="change">
+        <sq-radio name="mrxz">默认选中</sq-radio>
+      </sq-radio-group>
+    </p>
+    <p>
+      <sq-radio-group v-model="value3" disabled @change="change">
+        <sq-radio name="jy">禁用</sq-radio>
+      </sq-radio-group>
+    </p>
+    <p>
+      <sq-radio-group v-model="value4" disabled @change="change">
+        <sq-radio name="xzqjy">选中且禁用</sq-radio>
+      </sq-radio-group>
+    </p>
+    
+    <p>禁用状态</p>
+    <sq-radio-group v-model="radioValue" @change="change" :disabled="radioDisabled">
       <sq-radio name="pg">苹果</sq-radio>
       <sq-radio name="xj">香蕉</sq-radio>
       <sq-radio name="hmg">哈密瓜</sq-radio>
     </sq-radio-group>
-    <p>{{ radioValue }}</p>
-    <p>
-      <sq-button type="primary" @click="radioValue = 'pg'">苹果</sq-button>
-    </p>
-    <p>
-      <sq-button type="primary" @click="radioValue = 'xj'">香蕉</sq-button>
-    </p>
-    <p>
-      <sq-button type="primary" @click="radioValue = 'hmg'">哈密瓜</sq-button>
-    </p>
+
+    <p>列表样式</p>
+    <sq-radio-group v-model="value5" type="cell" @change="change">
+      <sq-radio name="pg">苹果</sq-radio>
+      <sq-radio name="xj">香蕉</sq-radio>
+      <sq-radio name="hmg" disabled>哈密瓜</sq-radio>
+    </sq-radio-group>
+    <p>列表禁用状态</p>
+    <sq-radio-group v-model="value5" type="cell" @change="change" :disabled="radioDisabled">
+      <sq-radio name="pg">苹果</sq-radio>
+      <sq-radio name="xj">香蕉</sq-radio>
+      <sq-radio name="hmg">哈密瓜</sq-radio>
+    </sq-radio-group>
   </div>
 </template>
 
@@ -27,7 +50,13 @@ export default {
 
   data () {
     return {
-      radioValue: 'hmg'
+      value1: '',
+      value2: 'mrxz',
+      value3: '',
+      value4: 'xzqjy',
+      value5: 'hmg',
+      radioValue: 'hmg',
+      radioDisabled: true
     }
   },
 
