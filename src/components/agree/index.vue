@@ -39,7 +39,7 @@ export default {
 
 </script>
 <style lang="scss">
-@import '../assets/style/components/var.scss';
+@import '../../assets/style/components/var.scss';
 
 .sq-agree {
   display: inline-block;

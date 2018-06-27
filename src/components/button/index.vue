@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/style/components/button';
+@import '../../assets/style/components/button';
 .sq-btn~.sq-btn {
   margin-top: 10px;
 }

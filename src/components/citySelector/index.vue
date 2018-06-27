@@ -84,7 +84,7 @@ export default {
         this.cityList = this.tempCity[p.id]
       } else {
         this.loading = true
-        this.cityList = require('../mockdata/mock1.json').result[0]
+        this.cityList = require('../../mockdata/mock1.json').result[0]
         this.loading = false
         // utils.get('/ws/district/v1/getchildren', {id: p.id, key: 'ZIVBZ-C2BR5-3QAI3-QENXF-SUMUF-NSFSN'}).then(response => {
         //   this.loading = false
@@ -116,7 +116,7 @@ export default {
   watch: {
     visible: function (val, oldVal) {
       if (this.currentVisible === val) return
-      const response = require('../mockdata/city.json').result[0]
+      const response = require('../../mockdata/city.json').result[0]
       this.provinceList = response
       this.currentVisible = val
       // utils.get('/ws/district/v1/list', {key: 'ZIVBZ-C2BR5-3QAI3-QENXF-SUMUF-NSFSN'}).then(response => {

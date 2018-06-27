@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h4 class="center">普通式 -- 当前选中的值：{{ active2 }}</h4>
+    <h4 class="center">普通形式 -- 当前选中的值：{{ active2 }}</h4>
     <sq-accordion v-model="active2">
       <sq-accordion-item title="选项一" :name="1">
         <div>我是内容</div>
@@ -15,7 +15,7 @@
         <div>我是内容</div>
       </sq-accordion-item>
     </sq-accordion>
-    <h4 class="center">手风琴式 -- 当前选中的值：{{ active }}</h4>
+    <h4 class="center">手风琴形式 -- 当前选中的值：{{ active }}</h4>
     <sq-accordion v-model="active" accordion>
       <sq-accordion-item title="选项一" :name="1">
         <div>我是内容</div>

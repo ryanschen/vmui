@@ -4,74 +4,74 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
-import SqDemo from '@/components/demo'
+import Demo from '@/components/demo'
 
-import SqCarlicense from '@/components/carlicense'
-import SqButton from '@/components/button'
-import SqTabpane from '@/components/tabpane'
-import SqTabs from '@/components/tabs'
-import SqField from '@/components/field'
-import SqCell from '@/components/cell'
-import SqCellGroup from '@/components/cellGroup'
-import SqFieldgroup from '@/components/fieldGroup'
-import SqRadio from '@/components/radio'
-import SqRadioGroup from '@/components/radioGroup'
-import SqActionsheet from '@/components/actionsheet'
-import SqAgree from '@/components/agree'
-import SqPicker from '@/components/picker'
-import SqPopup from '@/components/popup'
-import SqSwiper from '@/components/swiper'
-import SqChildinsuranceCell from '@/components/childinsuranceCell'
-import SqNoticeBar from '@/components/noticeBar'
-import SqCitySelector from '@/components/citySelector'
-import SqLoadmore from '@/components/loadmore'
-import SqDatepicker from '@/components/datepicker'
-import SqSwitch from '@/components/switch'
-import SqAccordion from '@/components/accordion'
-import SqAccordionItem from '@/components/accordionItem'
-import SqStepper from '@/components/stepper'
-import SqTag from '@/components/tag'
+import Accordion from '../src/components/accordion'
+import AccordionItem from '../src/components/accordionItem'
+import Actionsheet from '../src/components/actionsheet'
+import Agree from '../src/components/agree'
+import Button from '../src/components/button'
+import Carlicense from '../src/components/carlicense'
+import Cell from '../src/components/cell'
+import CellGroup from '../src/components/cellGroup'
+import ChildinsuranceCell from '../src/components/childinsuranceCell'
+import CitySelector from '../src/components/citySelector'
+import Datepicker from '../src/components/datepicker'
+import Field from '../src/components/field'
+import Fieldgroup from '../src/components/fieldGroup'
+import Loadmore from '../src/components/loadmore'
+import NoticeBar from '../src/components/noticeBar'
+import Picker from '../src/components/picker'
+import Popup from '../src/components/popup'
+import Radio from '../src/components/radio'
+import RadioGroup from '../src/components/radioGroup'
+import Stepper from '../src/components/stepper'
+import Swiper from '../src/components/swiper'
+import Switch from '../src/components/switch'
+import Tabpane from '../src/components/tabpane'
+import Tabs from '../src/components/tabs'
+import Tag from '../src/components/tag'
 
-import SqToast from '@/components/toast/index.js'
-import SqDialog from '@/components/dialog/index.js'
+import Toast from '../src/components/toast'
+import Dialog from '../src/components/dialog'
 
 import '../src/assets/icon/iconfont.css'
 
 const components = [
-  SqDemo,
-  SqCarlicense,
-  SqButton,
-  SqTabpane,
-  SqTabs,
-  SqField,
-  SqCell,
-  SqCellGroup,
-  SqFieldgroup,
-  SqRadioGroup,
-  SqRadio,
-  SqActionsheet,
-  SqAgree,
-  SqPicker,
-  SqPopup,
-  SqSwiper,
-  SqChildinsuranceCell,
-  SqNoticeBar,
-  SqCitySelector,
-  SqLoadmore,
-  SqDatepicker,
-  SqSwitch,
-  SqAccordion,
-  SqAccordionItem,
-  SqStepper,
-  SqTag
+  Accordion,
+  AccordionItem,
+  Actionsheet,
+  Agree,
+  Button,
+  Carlicense,
+  Cell,
+  CellGroup,
+  ChildinsuranceCell,
+  CitySelector,
+  Datepicker,
+  Demo,
+  Field,
+  Fieldgroup,
+  Loadmore,
+  NoticeBar,
+  Picker,
+  Popup,
+  Radio,
+  RadioGroup,
+  Stepper,
+  Swiper,
+  Switch,
+  Tabpane,
+  Tabs,
+  Tag 
 ]
 
 components.forEach(component => {
   Vue.component(component.name, component)
 })
 
-Vue.use(SqToast)
-Vue.use(SqDialog)
+Vue.use(Toast)
+Vue.use(Dialog)
 
 Vue.config.productionTip = false
 

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import SqCheckicon from './checkicon'
+import SqCheckicon from '../checkicon'
 
 export default {
   name: 'sq-childinsurance-cell',
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/style/mixins.scss';
+@import '../../assets/style/mixins.scss';
 
 .sq-childinsurance-cell {
   background-color: #ffffff;
