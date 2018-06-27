@@ -26,6 +26,7 @@ import Popup from '../src/components/popup'
 import Radio from '../src/components/radio'
 import RadioGroup from '../src/components/radioGroup'
 import Stepper from '../src/components/stepper'
+import SubmitBar from '../src/components/submitBar'
 import Swiper from '../src/components/swiper'
 import Switch from '../src/components/switch'
 import Tabpane from '../src/components/tabpane'
@@ -59,6 +60,7 @@ const components = [
   Radio,
   RadioGroup,
   Stepper,
+  SubmitBar,
   Swiper,
   Switch,
   Tabpane,
